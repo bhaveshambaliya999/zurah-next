@@ -60,26 +60,20 @@ export async function getServerSideProps(context) {
   }
 }
 
-
 export default function Home({ seoData, entityData }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (entityData && Object.keys(entityData).length > 0) {
-      // dispatch(storeEntityId(entityData));
       sessionStorage.setItem("storeData", JSON.stringify(entityData));
+      // Optionally dispatch to redux
+      // dispatch(storeEntityId(entityData));
     }
   }, [dispatch, entityData]);
 
   return (
     <>
-      <Seo
-        title={seoData?.title}
-        description={seoData?.description}
-        keywords={seoData?.keywords}
-        image={seoData?.image}
-        url={seoData?.url}
-      />
+      <Seo {...seoData} />
       <Homes entityData={entityData} />
     </>
   );
