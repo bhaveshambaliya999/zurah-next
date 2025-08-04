@@ -69,7 +69,7 @@ import commanService from "../../../CommanService/commanService";
 import { Accordion, OverlayTrigger, Tooltip } from "react-bootstrap";
 import DIYPageProcessStep from "../../DiyProduct/DIYProcessStepBar/DIYPageProcessStep";
 import RelatedProduct from "../RelatedProducts/relatedproduct";
-import Seo from "@/components/Seo/seo";;
+import Seo from "../../Seo/seo";
 // Ensure jQuery is available in the browser environment
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";

@@ -14,7 +14,7 @@ import { Card } from "react-bootstrap"
 import Skeleton from "react-loading-skeleton"
 import NoRecordFound from "../../../CommanUIComp/NoRecordFound/noRecordFound"
 import Notification from "../../../CommanUIComp/Notification/Notification"
-import Seo from "@/components/Seo/seo";
+import Seo from "../../Seo/seo"
 
 const DiyPage = () => {
 
