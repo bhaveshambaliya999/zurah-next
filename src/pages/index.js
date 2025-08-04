@@ -1,6 +1,6 @@
 // pages/index.js
 import Homes from "@/components/HomePage/Home/homes";
-import Seo from "@/components/Seo/seo";
+import Seo from "@/components/SEO/seo";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { storeEntityId } from "@/Redux/action";

@@ -1,6 +1,6 @@
 // pages/products/[verticalCode].js
 import Jewellery from "@/components/Jewellery/Jewellery/jewellery";
-import Seo from "@/components/Seo/seo";
+import Seo from "@/components/SEO/seo";
 import { Commanservice } from "@/CommanService/commanService";
 
 export async function getServerSideProps(context) {

@@ -3,7 +3,7 @@
 import { Commanservice } from "@/CommanService/commanService";
 import Loader from "@/CommanUIComp/Loader/Loader";
 import SingleProductJewellery from "@/components/Jewellery/SingleProductJewellery/singleproductjewellery";
-import Seo from "@/components/Seo/seo";
+import Seo from "@/components/SEO/seo";
 import axios from "axios";
 import { Suspense } from "react";
 

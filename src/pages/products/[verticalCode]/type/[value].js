@@ -1,6 +1,6 @@
 // pages/products/[verticalCode]/type/[value].js
 import React from "react";
-import Seo from "@/components/Seo/seo";
+import Seo from "@/components/SEO/seo";
 import Jewellery from "@/components/Jewellery/Jewellery/jewellery";
 import { Commanservice } from "@/CommanService/commanService";
 
