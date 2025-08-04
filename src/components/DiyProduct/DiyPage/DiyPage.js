@@ -14,7 +14,7 @@ import { Card } from "react-bootstrap"
 import Skeleton from "react-loading-skeleton"
 import NoRecordFound from "../../../CommanUIComp/NoRecordFound/noRecordFound"
 import Notification from "../../../CommanUIComp/Notification/Notification"
-import Seo from "../../SEO/seo"
+//import Seo from "../../SEO/seo"
 
 const DiyPage = () => {
 
@@ -154,7 +154,7 @@ const DiyPage = () => {
 
     return (
         <React.Fragment>
-            <Seo title={metaConfig?.title} description={metaConfig?.description} keywords={metaConfig?.keywords} image={metaConfig?.image} url={metaConfig?.url} />
+            {/* <Seo title={metaConfig?.title} description={metaConfig?.description} keywords={metaConfig?.keywords} image={metaConfig?.image} url={metaConfig?.url} /> */}
             {loader && <Loader />}
             <section id='product-details'>
                 <div className="container">

@@ -14,7 +14,7 @@ import Loader from "../../../CommanUIComp/Loader/Loader";
 import Notification from "../../../CommanUIComp/Notification/Notification";
 import noRecordFound from "./../../../Assets/Images/ZURAH-1.png";
 import { addFilterAction, allBlogDataList, editDiamondAction, selectedDiamondObject, selectedDiamondShapeName, selectedJewelRing, selectedRingData, SelectFilterAction } from "../../../Redux/action";
-import Seo from "../../SEO/seo";
+// import Seo from "../../Seo/seo";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
@@ -67,13 +67,13 @@ const Homes = (props) => {
     //Meta
     var storeData = JSON.parse(typeof window !== "undefined" && sessionStorage.getItem("storeData"))
 
-    const metaConfig = {
-        title: storeEntityIds?.seo_titles,
-        description: storeEntityIds?.seo_description,
-        keywords: storeEntityIds?.seo_keyword,
-        image: HeaderLogoData?.[0]?.image,
-        url: typeof window !== "undefined" && window.location.href,
-    }
+    // const metaConfig = {
+    //     title: storeEntityIds?.seo_titles,
+    //     description: storeEntityIds?.seo_description,
+    //     keywords: storeEntityIds?.seo_keyword,
+    //     image: HeaderLogoData?.[0]?.image,
+    //     url: typeof window !== "undefined" && window.location.href,
+    // }
 
     //Function for most searchable product by API calling 
     const mostSearchableData = useCallback((sectionDataList, mainData, index) => {

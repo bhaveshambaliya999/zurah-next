@@ -1,17 +1,12 @@
-// pages/index.js
-import Homes from "@/components/HomePage/Home/homes";
-import Seo from "@/components/SEO/seo";
 import { useEffect } from "react";
+import { NextSeo } from "next-seo";
 import { useDispatch } from "react-redux";
-import { storeEntityId } from "@/Redux/action";
-import { Commanservice } from "@/CommanService/commanService";
+import Homes from "@/components/Homes"; // Your custom component
 
+// ✅ Server-side fetch
 export async function getServerSideProps(context) {
-  const userAgent = context.req.headers['user-agent'] || "";
-
-  const isBot = /bot|crawl|spider|slurp|facebook|twitter|whatsapp|linkedin|embed|telegram/i.test(userAgent);
-
-  const origin = context.req.headers.origin ||
+  const origin =
+    context.req.headers.origin ||
     (context.req.headers.host
       ? `https://${context.req.headers.host}`
       : "https://zurah-next.vercel.app");
@@ -19,34 +14,31 @@ export async function getServerSideProps(context) {
   const commanService = new Commanservice(origin);
 
   try {
-    const res = await commanService.postApi("/EmbeddedPageMaster", {
-      a: "GetStoreData",
-      store_domain: commanService.domain,
-      SITDeveloper: "1",
-    });
+    const res = await commanService.postApi(
+      "/EmbeddedPageMaster",
+      {
+        a: "GetStoreData",
+        store_domain: commanService.domain,
+        SITDeveloper: "1",
+      },
+      {
+        headers: {
+          origin: commanService.domain,
+        },
+      }
+    );
 
     const data = res?.data?.data || {};
 
-    // 💥 Return full meta data only for bots
-    if (isBot) {
-      return {
-        props: {
-          seoData: {
-            title: data?.seo_titles || "Zurah Jewellery",
-            description: data?.seo_description || "Default Description",
-            keywords: data?.seo_keywords || "Zurah, Jewellery",
-            image: data?.preview_image || "",
-            url: commanService.domain,
-          },
-          entityData: data,
-        },
-      };
-    }
-
-    // For normal users, return minimal
     return {
       props: {
-        seoData: {},
+        seoData: {
+          title: data?.seo_titles || "Zurah Jewellery",
+          description: data?.seo_description || "Default Description",
+          keywords: data?.seo_keywords || "Zurah, Jewellery",
+          image: data?.preview_image,
+          url: commanService.domain,
+        },
         entityData: data,
       },
     };
@@ -54,9 +46,55 @@ export async function getServerSideProps(context) {
     console.error("❌ Server-side fetch error:", err);
     return {
       props: {
-        seoData: {},
+        seoData: {
+          title: "Zurah Jewellery",
+          description: "Default Description",
+          keywords: "Zurah, Jewellery",
+          image: "https://yourdomain.com/default.jpg",
+          url: commanService.domain,
+        },
         entityData: {},
       },
     };
   }
+}
+
+// ✅ React Component
+export default function Home({ seoData, entityData }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (entityData && Object.keys(entityData).length > 0) {
+      sessionStorage.setItem("storeData", JSON.stringify(entityData));
+    }
+  }, [dispatch, entityData]);
+
+  return (
+    <>
+      {/* ✅ Dynamic SEO */}
+      <NextSeo
+        title={seoData?.title}
+        description={seoData?.description}
+        canonical={seoData?.url}
+        openGraph={{
+          title: seoData?.title,
+          description: seoData?.description,
+          url: seoData?.url,
+          images: [
+            {
+              url: seoData?.image,
+              width: 1200,
+              height: 630,
+              alt: seoData?.title || "Zurah Jewellery",
+              type: "image/jpeg",
+            },
+          ],
+          site_name: "Zurah Jewellery",
+        }}
+      />
+
+      {/* ✅ Page Content */}
+      <Homes entityData={entityData} />
+    </>
+  );
 }
