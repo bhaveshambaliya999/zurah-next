@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { NextSeo } from "next-seo";
 import { useDispatch } from "react-redux";
-import Homes from "@/components/Homes"; // Your custom component
+import Homes from "../components/HomePage/Home/homes";
 
 // ✅ Server-side fetch
 export async function getServerSideProps(context) {
