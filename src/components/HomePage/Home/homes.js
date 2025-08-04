@@ -14,7 +14,7 @@ import Loader from "../../../CommanUIComp/Loader/Loader";
 import Notification from "../../../CommanUIComp/Notification/Notification";
 import noRecordFound from "./../../../Assets/Images/ZURAH-1.png";
 import { addFilterAction, allBlogDataList, editDiamondAction, selectedDiamondObject, selectedDiamondShapeName, selectedJewelRing, selectedRingData, SelectFilterAction } from "../../../Redux/action";
-import Seo from "../../SEO/seo";
+import Seo from "../../Seo/seo";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
