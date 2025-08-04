@@ -379,8 +379,8 @@ const Header = ({ storeData }) => {
         }
         commanService.postLaravelApi("/NavigationMegamenu", obj, {
           headers: {
-            origin: "https://uat.zurahjewellery.com",
-            referer: "https://uat.zurahjewellery.com",
+            origin: "https://zurah-next.vercel.app",
+            referer: "https://zurah-next.vercel.app",
           },
         })
           .then((res) => {
