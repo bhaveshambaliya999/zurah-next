@@ -69,7 +69,7 @@ import commanService from "../../../CommanService/commanService";
 import { Accordion, OverlayTrigger, Tooltip } from "react-bootstrap";
 import DIYPageProcessStep from "../../DiyProduct/DIYProcessStepBar/DIYPageProcessStep";
 import RelatedProduct from "../RelatedProducts/relatedproduct";
-//import Seo from "../../SEO/seo";
+import Seo from "../../SEO/seo";
 // Ensure jQuery is available in the browser environment
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -4417,21 +4417,21 @@ const SingleProductJewellery = (props) => {
   }, [params]);
 
   //Meta
-  // const metaConfig = {
-  //   title: `${
-  //     isEmpty(specificationData?.seo_titles) !== ""
-  //       ? isEmpty(specificationData?.seo_titles)
-  //       : isEmpty(
-  //           firstWordCapital(
-  //             params?.variantId?.split("pv")[0]?.replaceAll("-", " ")
-  //           )
-  //         )
-  //   }`,
-  //   description: isEmpty(specificationData?.seo_description),
-  //   keywords: isEmpty(specificationData?.seo_keyword),
-  //   image: isEmpty(specificationData?.images?.[0]),
-  //   url: typeof window !== "undefined" ? window.location.href : "",
-  // };
+  const metaConfig = {
+    title: `${
+      isEmpty(specificationData?.seo_titles) !== ""
+        ? isEmpty(specificationData?.seo_titles)
+        : isEmpty(
+            firstWordCapital(
+              params?.variantId?.split("pv")[0]?.replaceAll("-", " ")
+            )
+          )
+    }`,
+    description: isEmpty(specificationData?.seo_description),
+    keywords: isEmpty(specificationData?.seo_keyword),
+    image: isEmpty(specificationData?.images?.[0]),
+    url: typeof window !== "undefined" ? window.location.href : "",
+  };
 
   return (
     <React.Fragment>

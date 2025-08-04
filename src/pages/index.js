@@ -1,9 +1,11 @@
+// pages/index.js
+import Homes from "@/components/HomePage/Home/homes";
+import Seo from "@/components/SEO/seo";
 import { useEffect } from "react";
-import { NextSeo } from "next-seo";
 import { useDispatch } from "react-redux";
-import Homes from "../components/HomePage/Home/homes";
+import { storeEntityId } from "@/Redux/action";
+import { Commanservice } from "@/CommanService/commanService";
 
-// ✅ Server-side fetch
 export async function getServerSideProps(context) {
   const origin =
     context.req.headers.origin ||
@@ -36,7 +38,7 @@ export async function getServerSideProps(context) {
           title: data?.seo_titles || "Zurah Jewellery",
           description: data?.seo_description || "Default Description",
           keywords: data?.seo_keywords || "Zurah, Jewellery",
-          image: data?.preview_image,
+          image: data?.preview_image || "",
           url: commanService.domain,
         },
         entityData: data,
@@ -50,7 +52,6 @@ export async function getServerSideProps(context) {
           title: "Zurah Jewellery",
           description: "Default Description",
           keywords: "Zurah, Jewellery",
-          image: "https://yourdomain.com/default.jpg",
           url: commanService.domain,
         },
         entityData: {},
@@ -59,41 +60,26 @@ export async function getServerSideProps(context) {
   }
 }
 
-// ✅ React Component
+
 export default function Home({ seoData, entityData }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (entityData && Object.keys(entityData).length > 0) {
+      // dispatch(storeEntityId(entityData));
       sessionStorage.setItem("storeData", JSON.stringify(entityData));
     }
   }, [dispatch, entityData]);
 
   return (
     <>
-      {/* ✅ Dynamic SEO */}
-      <NextSeo
+      <Seo
         title={seoData?.title}
         description={seoData?.description}
-        canonical={seoData?.url}
-        openGraph={{
-          title: seoData?.title,
-          description: seoData?.description,
-          url: seoData?.url,
-          images: [
-            {
-              url: seoData?.image,
-              width: 1200,
-              height: 630,
-              alt: seoData?.title || "Zurah Jewellery",
-              type: "image/jpeg",
-            },
-          ],
-          site_name: "Zurah Jewellery",
-        }}
+        keywords={seoData?.keywords}
+        image={seoData?.image}
+        url={seoData?.url}
       />
-
-      {/* ✅ Page Content */}
       <Homes entityData={entityData} />
     </>
   );
