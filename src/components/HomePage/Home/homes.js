@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Skeleton from 'react-loading-skeleton';
 import { Carousel } from "react-bootstrap";
 import Card from 'react-bootstrap/Card';
-import {OwlCarousel} from "react-owl-carousel2";
 import 'react-loading-skeleton/dist/skeleton.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { RandomId, isEmpty, changeUrl } from "../../../CommanFunctions/commanFunctions";
@@ -685,74 +684,6 @@ const Homes = (props) => {
                                     </React.Fragment>
                                     : <></>}
 
-                                {c.section_type === "MOST SEARCHABLE" &&
-                                    <React.Fragment>
-                                        {c.seleton &&
-                                            <div className={clsx('section_margin', styles['symbol-product'], styles['home-product'])} id={c.section_type}>
-                                                <div className="container">
-                                                    <div className='row align-items-center'>
-                                                        <div className='col-12 col-lg-4 mb-3 mb-lg-0'>
-                                                            <div className={styles['symbol-product-left']}>
-                                                                <div className='pb-4' data-aos="fade-right" data-aos-duration="900">
-                                                                    {logoDetail.length > 0 && logoDetail.map((item, i) => {
-                                                                        if (item.logo_type === "FOOTER") {
-                                                                            return (
-                                                                                <Image effect="blur" src={item.image !== "" && item.image !== null ? item.image : noRecordFound} alt='Logo Images' key={i} className='img-fluid wh-auto' width={300} height={50} />
-                                                                            )
-                                                                        }
-                                                                    })}
-                                                                </div>
-                                                                <h2 data-aos="fade-right" data-aos-duration="1000">{c.display_name}</h2>
-                                                                <p className={styles['content-box-desc']} dangerouslySetInnerHTML={{ __html: c.description }} data-aos="fade-right" data-aos-duration="1200"></p>
-                                                            </div>
-                                                        </div>
-                                                        <div className='col-12 col-lg-8'>
-                                                            <div className={clsx('pl-lg-3', styles['product-slider'])}>
-                                                                <OwlCarousel className="owl-theme" options={{ dots: false, responsive: { 0: { items: 1 }, 576: { items: 2 }, 768: { items: 3 }, 992: { items: 2 }, 1200: { items: 3 }, }, loop: false, margin: 19, responsiveClass: "true", nav: true, navText: ['<i class="ic_chavron_left p-2"></i>', '<i class="ic_chavron_right p-2"></i>',], }}>
-                                                                    {mostSearchableDataList.length > 0 ? mostSearchableDataList.map((c, i) => (
-                                                                        <Link className={clsx('h-100', 'product-box', 'color-black', 'bg-transparent', 'card')} href={`/products/${c?.menu_name?.toLowerCase()}/${changeUrl(isEmpty(c.product_name) + "-" + isEmpty(c.pv_unique_id))}`} key={i}>
-                                                                            <div className="position-relative shadow-hover">
-                                                                                <div className="bg-white">
-                                                                                    <figure className={clsx('figure', 'product-img-separate', 'my-auto', 'd-flex', 'align-items-center', 'justify-content-center')}>
-                                                                                        <Image effect="blur" src={c.image} alt={c.product_name} width='100%' height="290px" />
-                                                                                    </figure>
-                                                                                </div>
-                                                                                <div className={styles['product-detail']}>
-                                                                                    <div className={styles['detail-height']}>
-                                                                                        <div className={styles['product-desc']}>
-                                                                                            <p className={styles['most-viewable']}>{c.product_name}</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </Link>
-                                                                    )) :
-                                                                        skeletonLoaderProduct.map((c, i) => (
-                                                                            <div className='h-100 product-box color-black bg-transparent card' key={i}>
-                                                                                <div className="position-relative shadow-hover">
-                                                                                    <div className="bg-white">
-                                                                                        <figure className='figure product-img-separate my-auto d-flex align-items-center justify-content-center'>
-                                                                                            <Skeleton height={"100%"} />
-                                                                                        </figure>
-                                                                                    </div>
-                                                                                    <div className="product-detail">
-                                                                                        <div className="detail-height">
-                                                                                            <div className='mb-1 product-desc'>
-                                                                                                <Skeleton />
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        ))}
-                                                                </OwlCarousel>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        }
-                                    </React.Fragment>}
 
                             </React.Fragment>
                             :
