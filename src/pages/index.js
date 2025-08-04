@@ -7,8 +7,11 @@ import { storeEntityId } from "@/Redux/action";
 import { Commanservice } from "@/CommanService/commanService";
 
 export async function getServerSideProps(context) {
-  const origin =
-    context.req.headers.origin ||
+  const userAgent = context.req.headers['user-agent'] || "";
+
+  const isBot = /bot|crawl|spider|slurp|facebook|twitter|whatsapp|linkedin|embed|telegram/i.test(userAgent);
+
+  const origin = context.req.headers.origin ||
     (context.req.headers.host
       ? `https://${context.req.headers.host}`
       : "https://zurah-next.vercel.app");
@@ -16,31 +19,34 @@ export async function getServerSideProps(context) {
   const commanService = new Commanservice(origin);
 
   try {
-    const res = await commanService.postApi(
-      "/EmbeddedPageMaster",
-      {
-        a: "GetStoreData",
-        store_domain: commanService.domain,
-        SITDeveloper: "1",
-      },
-      {
-        headers: {
-          origin: commanService.domain,
-        },
-      }
-    );
+    const res = await commanService.postApi("/EmbeddedPageMaster", {
+      a: "GetStoreData",
+      store_domain: commanService.domain,
+      SITDeveloper: "1",
+    });
 
     const data = res?.data?.data || {};
 
+    // 💥 Return full meta data only for bots
+    if (isBot) {
+      return {
+        props: {
+          seoData: {
+            title: data?.seo_titles || "Zurah Jewellery",
+            description: data?.seo_description || "Default Description",
+            keywords: data?.seo_keywords || "Zurah, Jewellery",
+            image: data?.preview_image || "",
+            url: commanService.domain,
+          },
+          entityData: data,
+        },
+      };
+    }
+
+    // For normal users, return minimal
     return {
       props: {
-        seoData: {
-          title: data?.seo_titles || "Zurah Jewellery",
-          description: data?.seo_description || "Default Description",
-          keywords: data?.seo_keywords || "Zurah, Jewellery",
-          image: data?.preview_image || "",
-          url: commanService.domain,
-        },
+        seoData: {},
         entityData: data,
       },
     };
@@ -48,33 +54,9 @@ export async function getServerSideProps(context) {
     console.error("❌ Server-side fetch error:", err);
     return {
       props: {
-        seoData: {
-          title: "Zurah Jewellery",
-          description: "Default Description",
-          keywords: "Zurah, Jewellery",
-          url: commanService.domain,
-        },
+        seoData: {},
         entityData: {},
       },
     };
   }
-}
-
-export default function Home({ seoData, entityData }) {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (entityData && Object.keys(entityData).length > 0) {
-      sessionStorage.setItem("storeData", JSON.stringify(entityData));
-      // Optionally dispatch to redux
-      // dispatch(storeEntityId(entityData));
-    }
-  }, [dispatch, entityData]);
-
-  return (
-    <>
-      <Seo {...seoData} />
-      <Homes entityData={entityData} />
-    </>
-  );
 }
