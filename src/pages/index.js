@@ -7,11 +7,7 @@ import { storeEntityId } from "@/Redux/action";
 import { Commanservice } from "@/CommanService/commanService";
 
 export async function getServerSideProps(context) {
-  const origin =
-    context.req.headers.origin ||
-    (context.req.headers.host
-      ? `https://${context.req.headers.host}`
-      : "https://zurah-next.vercel.app");
+  const origin = "https://zurah-next.vercel.app";
 
   const commanService = new Commanservice(origin);
 
