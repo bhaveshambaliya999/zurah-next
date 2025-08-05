@@ -78,16 +78,28 @@ export default function Home({ seoData, entityData }) {
 
   return (
     <>
-      <NextSeo
-        title={seoData.title}
-        description={seoData.description}
-        openGraph={{
-          title: seoData.title,
-          description: seoData.description,
-          images: [{ url: seoData.image }],
-          url: seoData.url,
-        }}
-      />
+       <Head>
+          <title>{seoData.title}</title>
+          <meta name="description" content={seoData.description} />
+          <meta name="keywords" content={seoData.keywords} />
+
+          <meta property="og:title" content={seoData.title} />
+          <meta property="og:description" content={seoData.description} />
+          <meta property="og:image" content={seoData.image} />
+          <meta property="og:url" content={seoData.url} />
+          <meta property="og:type" content="website" />
+
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={seoData.title} />
+          <meta name="twitter:description" content={seoData.description} />
+          <meta name="twitter:image" content={seoData.image} />
+      </Head>
+
+      <div className="seo-preview">
+        <h1>{seoData.title}</h1>
+        <p>{seoData.description}</p>
+        <img src={seoData.image} alt="SEO Preview" width={300} />
+      </div>
 
       {/* Actual homepage */}
       <Homes entityData={entityData} />
