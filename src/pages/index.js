@@ -27,7 +27,8 @@ export async function getServerSideProps(context) {
         headers: {
           origin: commanService.domain,
         },
-      }
+        
+      },{ next: { revalidate: 3600 } }
     );
 
     const data = res?.data?.data || {};
