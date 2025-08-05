@@ -18,6 +18,11 @@ export async function getServerSideProps(context) {
         store_domain: commanService.domain,
         SITDeveloper: "1",
       },
+      {
+        headers: {
+          origin: commanService.domain,
+        },
+      },
       { next: { revalidate: 3600 } }
     );
 

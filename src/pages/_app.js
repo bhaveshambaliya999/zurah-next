@@ -26,14 +26,14 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import "react-inner-image-zoom/lib/styles.min.css";
-
+import Header from "@/components/HeaderFooter/Header/header"
 // Dynamic imports for better performance
-const Header = dynamic(
-  () => import("@/components/HeaderFooter/Header/header"),
-  {
-    ssr: false,
-  }
-);
+// const Header = dynamic(
+//   () => import("@/components/HeaderFooter/Header/header"),
+//   {
+//     ssr: false,
+//   }
+// );
 
 function InnerApp({ Component, pageProps }) {
   const dispatch = useDispatch();
