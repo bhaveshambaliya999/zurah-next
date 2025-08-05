@@ -30,7 +30,7 @@ if (typeof window !== "undefined") {
 // import AOS from 'aos';
 // import 'aos/dist/aos.css';
 
-const Homes = (props) => {
+const Homes = ({ entityData }) => {
     //States and Variables declarations
     const navigate = useRouter();
     const storeEntityIds = useSelector((state) => state.storeEntityId);
@@ -67,15 +67,7 @@ const Homes = (props) => {
     //Meta
     var storeData = JSON.parse(typeof window !== "undefined" && sessionStorage.getItem("storeData"))
 
-    const metaConfig = {
-        title: storeEntityIds?.seo_titles,
-        description: storeEntityIds?.seo_description,
-        keywords: storeEntityIds?.seo_keyword,
-        image: HeaderLogoData?.[0]?.image,
-        url: typeof window !== "undefined" && window.location.href,
-    }
-    console.log("✅ Meta Config:", metaConfig);
-
+    
     //Function for most searchable product by API calling 
     const mostSearchableData = useCallback((sectionDataList, mainData, index) => {
         const obj = {
