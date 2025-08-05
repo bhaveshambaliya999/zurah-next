@@ -3,7 +3,7 @@ import Homes from "@/components/HomePage/Home/homes";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { storeEntityId } from "@/Redux/action";
-import { NextSeo } from "next-seo";
+import Head from "next/head";
 import { Commanservice } from "@/CommanService/commanService";
 
 export async function getServerSideProps() {
