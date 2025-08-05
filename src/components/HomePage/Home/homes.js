@@ -68,12 +68,18 @@ const Homes = (props) => {
     var storeData = JSON.parse(typeof window !== "undefined" && sessionStorage.getItem("storeData"))
 
     const metaConfig = {
-        title: storeEntityIds?.seo_titles,
-        description: storeEntityIds?.seo_description,
-        keywords: storeEntityIds?.seo_keyword,
-        image: HeaderLogoData?.[0]?.image,
-        url: typeof window !== "undefined" && window.location.href,
-    }
+  title: storeEntityIds?.seo_titles || "Zurah Jewellery",
+  description: storeEntityIds?.seo_description || "Default description",
+  keywords: storeEntityIds?.seo_keywords || "zurah, jewellery",
+  image:
+    HeaderLogoData?.[0]?.image && HeaderLogoData[0].image.startsWith("http")
+      ? HeaderLogoData[0].image
+      : "https://yourdomain.com/default.jpg",
+  url:
+    typeof window !== "undefined"
+      ? window.location.href
+      : "https://zurah-next.vercel.app/",
+};
     console.log("✅ Meta Config:", metaConfig);
 
     //Function for most searchable product by API calling 
