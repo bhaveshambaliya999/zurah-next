@@ -2,75 +2,43 @@
 import Homes from "@/components/HomePage/Home/homes";
 import Seo from "@/components/SEO/seo";
 import { useEffect } from "react";
+import Head from "next/head";
 
-export async function getServerSideProps(context) {
-  const origin = "https://zurah-next.vercel.app";
-  const { Commanservice } = await import("@/CommanService/commanService");
-  const commanService = new Commanservice(origin);
-
-  let seoData = {
-    title: "Zurah Jewellery",
-    description: "Default Description",
-    keywords: "Zurah, Jewellery",
-    image: `${origin}/default-preview.jpg`,
-    url: origin
-  };
-  let entityData = {};
-
-  try {
-    const res = await commanService.postApi(
-      "/EmbeddedPageMaster",
-      {
-        a: "GetStoreData",
-        store_domain: commanService.domain,
-        SITDeveloper: "1",
-      },
-      {
-        headers: { origin: commanService.domain }
-      }
-    );
-    entityData = res?.data?.data || {};
-
-    // build full image url if needed
-    let imageUrl = "";
-    if (entityData?.preview_image) {
-      imageUrl = entityData.preview_image.startsWith("http")
-        ? entityData.preview_image
-        : `${origin}${entityData.preview_image.startsWith("/") ? "" : "/"}${entityData.preview_image}`;
-    } else {
-      imageUrl = `${origin}/default-preview.jpg`;
-    }
-
-    seoData = {
-      title: entityData.seo_titles || "Zurah Jewellery",
-      description: entityData.seo_description || "Default Description",
-      keywords: entityData.seo_keywords || "Zurah, Jewellery",
-      image: imageUrl,
-      url: origin,
-    };
-  } catch (err) {
-    console.error("Server-side fetch error:", err);
-  }
-
+export async function getServerSideProps() {
+  // simulates SEO data from server
   return {
-    props: { seoData, entityData }
-  };
+    props: {
+      seo: {
+        title: "Zurah Jewellery",
+        description: "The best jewellery in town, shop exclusive collections.",
+        keywords: "Zurah, Jewellery, Diamonds",
+        image: "https://zurah-next.vercel.app/default-preview.jpg",
+        url: "https://zurah-next.vercel.app",
+      }
+    }
+  }
 }
 
-export default function Home({ seoData, entityData }) {
-  // for debugging
-  // useEffect(() => {console.log({seoData}); }, [seoData]);
-
+export default function Home({ seo }) {
   return (
     <>
-      <Seo
-        title={seoData.title}
-        description={seoData.description}
-        keywords={seoData.keywords}
-        image={seoData.image}
-        url={seoData.url}
-      />
-      <Homes entityData={entityData} />
+      <Head>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <meta name="keywords" content={seo.keywords} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:image" content={seo.image} />
+        <meta property="og:url" content={seo.url} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={seo.title} />
+        <meta name="twitter:description" content={seo.description} />
+        <meta name="twitter:image" content={seo.image} />
+      </Head>
+      <main>
+        <h1>Hello Zurah World!</h1>
+      </main>
     </>
-  );
+  )
 }
