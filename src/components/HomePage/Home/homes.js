@@ -74,6 +74,7 @@ const Homes = (props) => {
         image: HeaderLogoData?.[0]?.image,
         url: typeof window !== "undefined" && window.location.href,
     }
+    console.log("✅ Meta Config:", metaConfig);
 
     //Function for most searchable product by API calling 
     const mostSearchableData = useCallback((sectionDataList, mainData, index) => {
