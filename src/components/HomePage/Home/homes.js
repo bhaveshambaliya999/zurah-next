@@ -73,7 +73,9 @@ const Homes = (props) => {
         keywords: storeEntityIds?.seo_keyword,
         image: HeaderLogoData?.[0]?.image,
         url: typeof window !== "undefined" && window.location.href,
+        
     }
+      console.log(data?.seo_titles);
 
     //Function for most searchable product by API calling 
     const mostSearchableData = useCallback((sectionDataList, mainData, index) => {
