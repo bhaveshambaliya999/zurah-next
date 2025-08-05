@@ -1,13 +1,13 @@
 // pages/index.js
 import Homes from "@/components/HomePage/Home/homes";
-import Seo from "@/components/SEO/seo";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { storeEntityId } from "@/Redux/action";
+import { NextSeo } from "next-seo";
 import { Commanservice } from "@/CommanService/commanService";
 
-export async function getServerSideProps(context) {
-  const origin = "https://zurah-next.vercel.app"; // Your frontend domain
+export async function getServerSideProps() {
+  const origin = "https://zurah-next.vercel.app";
   const commanService = new Commanservice(origin);
 
   try {
@@ -22,20 +22,18 @@ export async function getServerSideProps(context) {
         headers: {
           origin: commanService.domain,
         },
-      },
-      { next: { revalidate: 3600 } }
+      }
     );
 
     const data = res?.data?.data || {};
 
-    // ✅ Ensure image is a full valid URL
     let imageUrl = "";
     if (data?.preview_image) {
       imageUrl = data.preview_image.startsWith("http")
         ? data.preview_image
         : `${origin}${data.preview_image.startsWith("/") ? "" : "/"}${data.preview_image}`;
     } else {
-      imageUrl = `${origin}/default-preview.jpg`; // ✅ fallback image
+      imageUrl = `${origin}/default-preview.jpg`;
     }
 
     return {
@@ -67,28 +65,31 @@ export async function getServerSideProps(context) {
   }
 }
 
+// ✅ Make sure this is default export and a valid component
 export default function Home({ seoData, entityData }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (entityData && Object.keys(entityData).length > 0) {
-      // dispatch(storeEntityId(entityData));
       sessionStorage.setItem("storeData", JSON.stringify(entityData));
     }
-
-    // ✅ Debug log
     console.log("✅ SEO DATA:", seoData);
   }, [dispatch, entityData, seoData]);
 
   return (
     <>
-      <Seo
-        title={seoData?.title}
-        description={seoData?.description}
-        keywords={seoData?.keywords}
-        image={seoData?.image}
-        url={seoData?.url}
+      <NextSeo
+        title={seoData.title}
+        description={seoData.description}
+        openGraph={{
+          title: seoData.title,
+          description: seoData.description,
+          images: [{ url: seoData.image }],
+          url: seoData.url,
+        }}
       />
+
+      {/* Actual homepage */}
       <Homes entityData={entityData} />
     </>
   );
