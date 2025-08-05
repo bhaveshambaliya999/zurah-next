@@ -26,15 +26,7 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import "react-inner-image-zoom/lib/styles.min.css";
-import Header from "@/components/HeaderFooter/Header/header";
-import { DefaultSeo } from "next-seo";
-// Dynamic imports for better performance
-// const Header = dynamic(
-//   () => import("@/components/HeaderFooter/Header/header"),
-//   {
-//     ssr: false,
-//   }
-// );
+import Header from "@/components/HeaderFooter/Header/header"
 
 function InnerApp({ Component, pageProps }) {
   const dispatch = useDispatch();
@@ -309,17 +301,6 @@ function InnerApp({ Component, pageProps }) {
         async
         src="https://cdn.tangiblee.com/integration/3.1/managed/www.tangiblee-integration.com/revision_1/variation_original/tangiblee-bundle.min.js"
       />
-      <DefaultSeo
-        title="Zurah Jewellery | Elegant & Unique Handmade Jewelry"
-        description="Explore stunning gold, diamond & silver jewellery. Shop timeless designs for every occasion. Free shipping, easy returns & secure online payments."
-        openGraph={{
-          type: "website",
-          locale: "en_US",
-          url: "https://zurah-next.vercel.app/",
-          site_name: "Zurah Next ",
-        }}
-      />
-
 
       <Suspense fallback={<Loader />}>
         <Header storeData={storeEntityIds} />
