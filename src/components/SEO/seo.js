@@ -1,4 +1,4 @@
-// components/Seo.js
+// components/SEO/seo.js
 import Head from "next/head";
 
 const Seo = ({
@@ -10,9 +10,7 @@ const Seo = ({
   type = "website",
   noIndex = false,
 }) => {
-  const fallbackImage = "https://rpdiamondsandjewellery-uat.s3.ap-southeast-1.amazonaws.com/writable/uploads/1003/510/BRD5100001/mini_program/1003_510_BRD5100001_mini_program_566913517528287565785.png";
-  // const canonicalUrl =
-  //   url || (typeof window !== "undefined" ? window.location.href : "zurah-next.vercel.app");
+  const fallbackImage = "https://zurah-next.vercel.app/default-preview.jpg";
   const canonicalUrl = url || "https://zurah-next.vercel.app/";
 
   const schema = {
@@ -20,7 +18,7 @@ const Seo = ({
     "@type": type,
     name: title,
     description,
-    url: canonicalUrl,  
+    url: canonicalUrl,
     image: [image || fallbackImage],
   };
 
@@ -29,6 +27,7 @@ const Seo = ({
       <title>{title}</title>
       <link rel="canonical" href={canonicalUrl} />
 
+      {/* Basic SEO */}
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       {noIndex && <meta name="robots" content="noindex, nofollow" />}
@@ -45,9 +44,9 @@ const Seo = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image || fallbackImage} />
-      <meta property="twitter:url" content={canonicalUrl} />
+      <meta name="twitter:url" content={canonicalUrl} />
 
-      {/* Structured Data */}
+      {/* JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
