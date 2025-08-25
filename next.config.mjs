@@ -11,9 +11,7 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "src/assets/sass")],
   },
-  eslint: {
-    ignoreDuringBuilds: true, // ✅ disable ESLint on build
-  },
+  
   webpack: (config, { dev }) => {
     if (!dev) {
       config.plugins = config.plugins.filter(

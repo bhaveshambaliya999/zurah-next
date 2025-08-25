@@ -29,8 +29,8 @@ const ShopFilter = dynamic(() => import("@/components/asides/ShopFilter"), { ssr
 const ProductAdditionalInformation = dynamic(() => import("@/components/asides/ProductAdditionalInformation"), { ssr: false });
 
 // CSS Imports
-import "../assets/sass/style.css";
-import "../styles/globals.scss";
+import "@/assets/sass/style.css";
+import "@/styles/globals.scss";
 
 
 
