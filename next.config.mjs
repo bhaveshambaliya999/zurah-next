@@ -4,9 +4,9 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  experimental: {
-    ppr: true,
-  },
+  // experimental: {
+  //   ppr: true,
+  // },
   webpack: (config, { dev, isServer }) => {
     if (!dev) {
       config.plugins = config.plugins.filter(
