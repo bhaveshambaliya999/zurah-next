@@ -1,4 +1,10 @@
 // next.config.mjs
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -17,12 +23,12 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'rpdiamondsandjewellery-staging.s3.ap-southeast-1.amazonaws.com',
+        protocol: "https",
+        hostname: "rpdiamondsandjewellery-staging.s3.ap-southeast-1.amazonaws.com",
       },
     ],
-    formats: ['image/webp', 'image/avif'],
+    formats: ["image/webp", "image/avif"],
   },
 };
 
-export default nextConfig; // ✅ ESM export
+export default nextConfig;
