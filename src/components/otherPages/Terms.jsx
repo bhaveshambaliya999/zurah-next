@@ -77,7 +77,7 @@ export default function Terms() {
         ) : (
           !loader && (
             <div className="d-flex justify-content-center w-100 not-found">
-              <Image src="/assets/images/RecordNotfound.png" loading="lazy" width={500} height={500} alt="Record Not found" />
+              <img src="/assets/images/RecordNotfound.png" loading="lazy" width={500} height={500} alt="Record Not found" />
             </div>
           )
         )}
