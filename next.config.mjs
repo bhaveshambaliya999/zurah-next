@@ -5,7 +5,7 @@ const nextConfig = {
     styledComponents: true,
   },
   experimental: {
-    ppr: true,
+    // ppr: true,
   },
   webpack: (config, { dev, isServer }) => {
     if (!dev) {
