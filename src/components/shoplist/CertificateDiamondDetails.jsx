@@ -11,8 +11,8 @@ import ShareComponent from "../common/ShareComponent";
 import Loader from "@/CommanUIComp/Loader/Loader";
 import Slider4 from "../singleProduct/sliders/Slider4";
 
-import IGI from "@/assets/images/IGI.jpg";
-import video from "@/assets/images/video.png";
+// import IGI from "@/assets/images/IGI.jpg";
+// import video from "@/assets/images/video.png";
 import { toast } from "react-toastify";
 import {
   activeDIYtabs,
