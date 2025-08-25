@@ -1,208 +1,138 @@
+import Script from "next/script";
+const Header1 = dynamic(() => import("@/components/headers/Header9"), { ssr: false });
+const Footer1 = dynamic(() => import("@/components/footers/Footer1"), { ssr: false });
+import { Provider, useDispatch, useSelector } from "react-redux";
+import Store from "../Redux/store";
+import { useRouter } from "next/router";
+
 import React, {
   useEffect,
   useCallback,
-  Suspense,
   useState,
-  useMemo,
+  useMemo
 } from "react";
-import { Provider, useDispatch, useSelector } from "react-redux";
-import Script from "next/script";
-import { wrapper } from "@/Redux/wrapper";
-import Loader from "@/CommanUIComp/Loader/Loader";
-import Footer from "@/components/HeaderFooter/Footer/footer";
-import commanService from "@/CommanService/commanService";
-import { storeCurrency, storeEntityId } from "@/Redux/action";
+import Loader from "../CommanUIComp/Loader/Loader";
+import Head from "next/head";
+import { storeCurrency, storeEntityId } from "../Redux/action";
+import Context from "@/context/Context";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
+
+
+const MobileHeader = dynamic(() => import("@/components/headers/MobileHeader"), { ssr: false });
+import { ToastContainer } from "react-toastify";
+const MobileFooter1 = dynamic(() => import("@/components/footers/MobileFooter1"), { ssr: false });
+const LoginFormPopup = dynamic(() => import("@/components/common/LoginFormPopup"), { ssr: false });
+
+const CartDrawer = dynamic(() => import("@/components/shopCartandCheckout/CartDrawer"), { ssr: false });
+const CustomerLogin = dynamic(() => import("@/components/asides/CustomerLogin"), { ssr: false });
+const ShopFilter = dynamic(() => import("@/components/asides/ShopFilter"), { ssr: false });
+const ProductAdditionalInformation = dynamic(() => import("@/components/asides/ProductAdditionalInformation"), { ssr: false });
 
 // CSS Imports
-import "swiper/css";
-import "swiper/css/navigation";
-import "@/Assets/css/bootstrap.min.css";
 import "@/styles/globals.scss";
-import "@/styles/icon.scss";
-import "@/Assets/css/animate.min.css";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
-import "react-loading-skeleton/dist/skeleton.css";
-import "react-inner-image-zoom/lib/styles.min.css";
-import Header from "@/components/HeaderFooter/Header/header"
+
+
+// Constants
+const STORE_DOMAIN = "https://uat-direct.rpdiamondsandjewellery.com";
+const MAX_RETRY_ATTEMPTS = 3;
+
+// Dynamic imports
+// const Header = dynamic(
+//   () => import("@/components/HeaderFooter/Header/header"),
+//   { ssr: false }
+// );
 
 function InnerApp({ Component, pageProps }) {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  // Redux selectors with error handling
-  const storeEntityIds = useSelector((state) => state?.storeEntityId || {});
-  const storeCurrencyState = useSelector((state) => state?.storeCurrency || "");
-
-  // Local state
+  const storeEntityIds = useSelector((state) => state?.storeEntityId);
   const [loaded, setLoaded] = useState(false);
-  const [error, setError] = useState(null);
   const [retryCount, setRetryCount] = useState(0);
+  const [error, setError] = useState(null);
 
-  // Constants
-  const MAX_RETRY_ATTEMPTS = 3;
-  const STORE_DOMAIN = "https://zurah-next.vercel.app";
+  const isStoreDataValid = useMemo(
+    () => storeEntityIds?.tenant_id,
+    [storeEntityIds]
+  );
 
-  // Safe dispatch wrapper
-  const safeDispatch = useCallback(
-    (action) => {
+  const getStoreData = useCallback(
+    async (attempt = 1) => {
       try {
-        if (dispatch && typeof dispatch === "function") {
-          dispatch(action);
+        const response = await fetch(
+          "http://192.168.84.45/sit-ci-api/call/EmbeddedPageMaster",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              STORE_DOMAIN,
+              prefer: STORE_DOMAIN,
+            },
+            body: JSON.stringify({
+              a: "GetStoreData",
+              store_domain: STORE_DOMAIN,
+              SITDeveloper: "1",
+            }),
+            cache: "no-store",
+          }
+        );
+
+        const result = await response.json();
+        if (result?.success === 1) {
+          const data = result?.data;
+          dispatch(storeEntityId(data));
+          dispatch(storeCurrency(data?.store_currency || "USD"));
+          sessionStorage.setItem("storeData", JSON.stringify(data));
+          setLoaded(true);
+          setRetryCount(0);
+        } else {
+          throw new Error("Invalid store data received");
         }
-      } catch (error) {
-        console.error("Dispatch error in _app.js:", error);
+      } catch (err) {
+        console.error("Store data load failed:", err);
+        setError(err.message);
+        sessionStorage.setItem("storeData", "false");
+        setLoaded(true);
       }
     },
     [dispatch]
   );
-
-  // Memoized store data validation
-  const isStoreDataValid = useMemo(() => {
-    return (
-      storeEntityIds &&
-      typeof storeEntityIds === "object" &&
-      storeEntityIds.tenant_id
-    );
-  }, [storeEntityIds]);
-
-  // Get store data with retry logic
-  const getStoreData = useCallback(
-    async (attempt = 1) => {
-      try {
-        const payload = {
-          a: "GetStoreData",
-          store_domain: STORE_DOMAIN,
-          SITDeveloper: "1",
-        };
-
-        console.log(
-          `🚀 Fetching store data (attempt ${attempt}/${MAX_RETRY_ATTEMPTS})`
-        );
-
-        const res = await commanService.postApi(
-          "/EmbeddedPageMaster",
-          payload,
-          {
-            headers: {
-              origin: STORE_DOMAIN,
-            },
-            timeout: 10000, // 10 second timeout
-          }
-        );
-
-        if (res?.data?.success === 1) {
-          const data = res.data.data;
-
-          // Validate required data
-          if (!data || !data.tenant_id) {
-            throw new Error("Invalid store data received");
-          }
-
-          safeDispatch(storeEntityId(data));
-          safeDispatch(storeCurrency(data?.store_currency || "USD"));
-
-          if (typeof window !== "undefined") {
-            sessionStorage.setItem("storeData", JSON.stringify(data));
-          }
-
-          setLoaded(true);
-          setError(null);
-          setRetryCount(0);
-
-          console.log("✅ Store data loaded successfully");
-        } else {
-          throw new Error(res?.data?.message || "Failed to fetch store data");
-        }
-      } catch (err) {
-        console.error(
-          `❌ Error fetching store data (attempt ${attempt}):`,
-          err
-        );
-
-        if (attempt < MAX_RETRY_ATTEMPTS) {
-          setRetryCount(attempt);
-          // Exponential backoff: 1s, 2s, 4s
-          const delay = Math.pow(2, attempt - 1) * 1000;
-          setTimeout(() => {
-            getStoreData(attempt + 1);
-          }, delay);
-        } else {
-          setError(err.message || "Failed to load store data");
-          setLoaded(true);
-
-          if (typeof window !== "undefined") {
-            sessionStorage.setItem("storeData", "false");
-          }
-        }
-      }
-    },
-    [safeDispatch]
-  );
-
-  // Initialize store data
   useEffect(() => {
-    let isMounted = true;
-
+     let isMounted = true;
     const initializeStoreData = async () => {
-      try {
-        if (typeof window === "undefined") return;
+      if (typeof window === "undefined") return;
 
-        // Check for cached data first
-        const stored = sessionStorage.getItem("storeData");
+      const cached = sessionStorage.getItem("storeData");
+       
 
-        if (stored && stored !== "false") {
-          try {
-            const parsed = JSON.parse(stored);
-
-            if (parsed && parsed.tenant_id) {
-              safeDispatch(storeEntityId(parsed));
-              safeDispatch(storeCurrency(parsed?.store_currency || "USD"));
-
-              if (isMounted) {
-                setLoaded(true);
-                console.log("✅ Store data loaded from cache");
-              }
-              return;
-            }
-          } catch (parseError) {
-            console.error("Error parsing cached store data:", parseError);
-            sessionStorage.removeItem("storeData");
+      if (cached && cached !== "false") {
+        try {
+          const parsed = JSON.parse(cached);
+          if (parsed?.tenant_id) {
+            dispatch(storeEntityId(parsed));
+            dispatch(storeCurrency(parsed?.store_currency || "USD"));
+            if (isMounted) setLoaded(true);
+            return;
           }
-        }
-
-        // Check for SSR data
-        if (pageProps?.storeEntityIds && pageProps.storeEntityIds.tenant_id) {
-          safeDispatch(storeEntityId(pageProps.storeEntityIds));
-          safeDispatch(
-            storeCurrency(pageProps.storeEntityIds?.store_currency || "USD")
-          );
-
-          sessionStorage.setItem(
-            "storeData",
-            JSON.stringify(pageProps.storeEntityIds)
-          );
-
-          if (isMounted) {
-            setLoaded(true);
-            console.log("✅ Store data loaded from SSR");
-          }
-          return;
-        }
-
-        // Fetch fresh data
-        if (isMounted) {
-          await getStoreData();
-        }
-      } catch (error) {
-        console.error("Error initializing store data:", error);
-        if (isMounted) {
-          setError(error.message);
-          setLoaded(true);
+        } catch {
+          sessionStorage.removeItem("storeData");
         }
       }
+
+      if (pageProps?.storeEntityIds?.tenant_id) {
+        dispatch(storeEntityId(pageProps.storeEntityIds));
+        dispatch(
+          storeCurrency(pageProps.storeEntityIds?.store_currency || "USD")
+        );
+        sessionStorage.setItem(
+          "storeData",
+          JSON.stringify(pageProps.storeEntityIds)
+        );
+        if (isMounted) setLoaded(true);
+        return;
+      }
+
+      if (isMounted) await getStoreData();
     };
 
     initializeStoreData();
@@ -210,115 +140,86 @@ function InnerApp({ Component, pageProps }) {
     return () => {
       isMounted = false;
     };
-  }, [pageProps?.storeEntityIds, getStoreData, safeDispatch]);
+  }, [pageProps?.storeEntityIds, getStoreData, dispatch]);
+  if (!loaded) return <Loader />;
 
-  useEffect(() => {
-    
-    var count = 0;
-    var count2 = 0;
-    setInterval(() => {
-      // Product Height
-      var className2 = document.querySelector(".product-img-separate");
-      if (className2 !== null && className2 !== undefined && className2 !== "") {
-        var divElement2 = document.querySelector(".product-img-separate");
-        if (divElement2.getBoundingClientRect() !== null && divElement2.getBoundingClientRect() !== undefined) {
-          var elemRect2 = divElement2.getBoundingClientRect();
-          var elemHeight2 = elemRect2.width;
-          if (elemHeight2 !== 0) {
-            var height2 = document.getElementsByClassName('figure');
-            if (height2.length > count2) {
-              height2[count2].setAttribute("style", `height:${elemHeight2 + "px"};`);
-              count2++;
-            } else {
-              count2 = 0;
-            }
-          }
-        }
-      }
-
-      // Skeleton Height
-      var className = document.getElementsByClassName("Skeleton");
-      if (className !== null && className !== undefined && className.length > 0) {
-        var divElement = document.querySelector(".Skeleton");
-        if (divElement.getBoundingClientRect() !== null && divElement.getBoundingClientRect() !== undefined) {
-          var elemRect = divElement.getBoundingClientRect();
-          var elemHeight = elemRect.width;
-          var height = document.getElementsByClassName('Skeleton');
-          if (height.length > count) {
-            height[count].setAttribute("style", `height:${elemHeight + "px"};`);
-            count++;
-          } else {
-            count = 0;
-          }
-        }
-      }
-
-      // loader hidden
-      var loader = document.getElementById("loader");
-      var body = document.getElementById("body");
-      var active = document.getElementsByClassName("navbar-toggler active");
-      var lgactive = document.getElementsByClassName('product-detail_right');
-      if (loader !== null || active.length > 0) {
-        // body.setAttribute("style", "overflow:hidden;");
-        // if (lgactive.length == 0) {
-        //   window.scrollTo(0, 0);
-        // }
-      } else {
-        if (active.length === 0) {
-          // body.setAttribute("style", "overflow:visible;")
-        }
-      }
-    }, 1);
-  }, []);
-
-
-  // Show loading state
-  if (!loaded) {
-    return <Loader />;
-  }
-
-  // Show warning if store data is invalid but continue
   if (!isStoreDataValid) {
-    console.warn(
-      "⚠️ Store data is invalid or incomplete, continuing with defaults"
-    );
+    console.warn("⚠️ Store data is invalid or incomplete.");
   }
 
   return (
     <>
-      <Script id="google-analytics1" async src="https://www.googletagmanager.com/gtag/js?id=G-R6XBQY8QGN" />
-      <Script id="google-analytics2" dangerouslySetInnerHTML={{
-        __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-R6XBQY8QGN');
-        `,
-      }} />
-      <Script id="jquery" src="/Assets/Js/jquery-3.6.1.min.js" defer />
+      {/* Scripts */}
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-R6XBQY8QGN"
+      />
+      <Script
+        id="google-analytics"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-R6XBQY8QGN');
+          `,
+        }}
+      />
+      <Script id="jquery" src="https://code.jquery.com/jquery-3.7.1.min.js" strategy="beforeInteractive" />
       <Script
         id="tangiblee"
         async
         src="https://cdn.tangiblee.com/integration/3.1/managed/www.tangiblee-integration.com/revision_1/variation_original/tangiblee-bundle.min.js"
       />
-
-      <Suspense fallback={<Loader />}>
-        <Header storeData={storeEntityIds} />
-        <Component {...pageProps} />
-        <Footer />
-      </Suspense>
+      {/* <MobileHeader /> */}
+      <ToastContainer />
+      <Header1 storeData={storeEntityIds} />
+      <Component {...pageProps} />
+      <Footer1 storeData={storeEntityIds} />
+      <MobileFooter1 />
+      <LoginFormPopup />
+      <CartDrawer />
+      <CustomerLogin />
+      <ShopFilter />
+      <ProductAdditionalInformation />
+      <div className="page-overlay" id="pageOverlay"></div>
     </>
   );
 }
 
-function App({ Component, ...rest }) {
-  const { store, props } = wrapper.useWrappedStore(rest);
+function App({ Component, pageProps }) {
+  // const { store } = wrapper.useWrappedStore({ pageProps });
 
+  
+
+  
   return (
-    <Provider store={store}>
-      <Suspense fallback={<Loader />}>
-        <InnerApp Component={Component} pageProps={props.pageProps} />
-      </Suspense>
+    <Provider store={Store}>
+      <Context>
+        <Head>
+          <title>{pageProps?.seoData?.title}</title>
+          <meta name="description" content={pageProps?.seoData?.description} />
+          <meta name="keywords" content={pageProps?.seoData?.keywords} />
+
+          <meta property="og:title" content={pageProps?.seoData?.title} />
+          <meta
+            property="og:description"
+            content={pageProps?.seoData?.description}
+          />
+          <meta property="og:image" content={pageProps?.seoData?.image} />
+          <meta property="og:url" content={pageProps?.seoData?.url} />
+          <meta property="og:type" content="website" />
+
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={pageProps?.seoData?.title} />
+          <meta
+            name="twitter:description"
+            content={pageProps?.seoData?.description}
+          />
+          <meta name="twitter:image" content={pageProps?.seoData?.image} />
+        </Head>
+        <InnerApp Component={Component} pageProps={pageProps} />
+      </Context>
     </Provider>
   );
 }

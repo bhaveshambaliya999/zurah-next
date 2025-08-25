@@ -1,5 +1,5 @@
 // Redux/wrapper.js
 import { createWrapper } from "next-redux-wrapper";
-import { makeStore } from "./store";
+import store from "./store";
 
-export const wrapper = createWrapper(makeStore, { debug: false });
+export const wrapper = createWrapper(store, { debug: false });

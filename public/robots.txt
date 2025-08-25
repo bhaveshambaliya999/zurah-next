@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://uat-direct.rpdiamondsandjewellery.com//sitemap.xml

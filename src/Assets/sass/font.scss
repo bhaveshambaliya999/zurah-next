@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'Jost';
+    src: url('../fonts/jost/Jost-Regular.eot');
+    src: url('../fonts/jost/Jost-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/jost/Jost-Regular.woff2') format('woff2'),
+        url('../fonts/jost/Jost-Regular.woff') format('woff'),
+        url('../fonts/jost/Jost-Regular.svg#Jost-Regular') format('svg');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Jost';
+    src: url('../fonts/jost/Jost-Medium.eot');
+    src: url('../fonts/jost/Jost-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/jost/Jost-Medium.woff2') format('woff2'),
+        url('../fonts/jost/Jost-Medium.woff') format('woff'),
+        url('../fonts/jost/Jost-Medium.svg#Jost-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Jost';
+    src: url('../fonts/jost/Jost-SemiBold.eot');
+    src: url('../fonts/jost/Jost-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/jost/Jost-SemiBold.woff2') format('woff2'),
+        url('../fonts/jost/Jost-SemiBold.woff') format('woff'),
+        url('../fonts/jost/Jost-SemiBold.svg#Jost-SemiBold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Jost';
+    src: url('../fonts/jost/Jost-Bold.eot');
+    src: url('../fonts/jost/Jost-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/jost/Jost-Bold.woff2') format('woff2'),
+        url('../fonts/jost/Jost-Bold.woff') format('woff'),
+        url('../fonts/jost/Jost-Bold.svg#Jost-Bold') format('svg');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+  font-family: "zurah_icon";
+  src: url("../fonts/zurah_icon.ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}

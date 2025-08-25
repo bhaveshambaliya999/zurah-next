@@ -1,44 +1,70 @@
-// pages/index.js
-import Homes from "@/components/HomePage/Home/homes";
-import Seo from "@/components/SEO/seo";
-import { useEffect } from "react";
+import dynamic from "next/dynamic";
 import Head from "next/head";
+const HomePageDefault = dynamic(() => import("@/components/homes/home-9/homePageDefault"), {ssr: true,});
+
 
 export async function getServerSideProps() {
-  // simulates SEO data from server
+  const origin = "https://uat-direct.rpdiamondsandjewellery.com";
+
+  const response = await fetch(
+    "http://192.168.84.45/sit-ci-api/call/EmbeddedPageMaster",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        origin,
+        prefer: origin,
+      },
+      body: JSON.stringify({
+        a: "GetStoreData",
+        store_domain: origin,
+        SITDeveloper: "1",
+      }),
+      cache: 'no-store'
+    }
+  );
+
+  const result = await response.json();
+  // console.log(result)
+  const storeEntityIds = result?.success === 1 ? result?.data : {};
+  const seoData = {
+    title: storeEntityIds?.seo_titles || "",
+    description: storeEntityIds?.seo_description || "",
+    keywords: storeEntityIds?.seo_keyword || "",
+    image: storeEntityIds?.preview_image || "",
+    url: origin,
+  };
+
+  console.log(seoData,'homepage seo')
   return {
     props: {
-      seo: {
-        title: "Zurah Jewellery",
-        description: "The best jewellery in town, shop exclusive collections.",
-        keywords: "Zurah, Jewellery, Diamonds",
-        image: "https://zurah-next.vercel.app/default-preview.jpg",
-        url: "https://zurah-next.vercel.app",
-      }
-    }
-  }
+      storeEntityIds,
+      seoData,
+    },
+  };
 }
 
-export default function Home({ seo }) {
+export default function HomePage({ storeEntityIds, seoData }) {
   return (
     <>
       <Head>
-        <title>{seo.title}</title>
-        <meta name="description" content={seo.description} />
-        <meta name="keywords" content={seo.keywords} />
+        <title>{seoData?.title}</title>
+        <meta name="description" content={seoData?.description} />
+        <meta name="keywords" content={seoData?.keywords} />
+
+        <meta property="og:title" content={seoData?.title} />
+        <meta property="og:description" content={seoData?.description} />
+        <meta property="og:image" content={seoData?.image} />
+        <meta property="og:url" content={seoData?.url} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={seo.title} />
-        <meta property="og:description" content={seo.description} />
-        <meta property="og:image" content={seo.image} />
-        <meta property="og:url" content={seo.url} />
+
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={seo.title} />
-        <meta name="twitter:description" content={seo.description} />
-        <meta name="twitter:image" content={seo.image} />
+        <meta name="twitter:title" content={seoData?.title} />
+        <meta name="twitter:description" content={seoData?.description} />
+        <meta name="twitter:image" content={seoData?.image} />
       </Head>
-      <main>
-        <h1>Hello Zurah World!</h1>
-      </main>
+
+      <HomePageDefault entityData={storeEntityIds} seoData={seoData} />
     </>
-  )
+  );
 }

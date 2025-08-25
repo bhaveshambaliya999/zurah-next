@@ -12,7 +12,7 @@ function getEnv(origin) {
       imageUrl: "http://192.168.84.21:8080",
       baseUrl1: "http://192.168.84.21:8080/api/call",
       baseUrl2: "http://192.168.84.45/sit-ci-api/call",
-      domain: "https://zurah-next.vercel.app",
+      domain: "https://uat-direct.rpdiamondsandjewellery.com",
     };
   } else if (source?.includes("staging")) {
     env = {
@@ -24,15 +24,15 @@ function getEnv(origin) {
   } else if (source?.includes("uat")) {
     env = {
       imageUrl: "https://apiuat-ecom-store.upqor.com",
-      baseUrl1: "https://apiuat-ecom-store.upqor.com/api/call",
-      baseUrl2: "https://apiuat-ecom.upqor.com/call",
+      baseUrl1: "http://192.168.84.21:8080/api/call",
+      baseUrl2: "http://192.168.84.45/sit-ci-api/call",
       domain: source,
     };
   } else {
     env = {
       imageUrl: "https://apiuat-ecom-store.upqor.com",
-      baseUrl1: "https://apiuat-ecom-store.upqor.com/api/call",
-      baseUrl2: "https://apiuat-ecom.upqor.com/call",
+      baseUrl1: "http://192.168.84.21:8080/api/call",
+      baseUrl2: "http://192.168.84.45/sit-ci-api/call",
       domain: source,
     };
   }
@@ -77,6 +77,6 @@ const domain =
   typeof window !== "undefined"
     ? getEnv(window.location.origin).domain
     : getEnv().domain;
-
-export { Commanservice, getEnv, domain };
+const imageUrl = getEnv().imageUrl
+export { Commanservice, getEnv, domain, imageUrl };
 export default defaultService;
