@@ -1,18 +1,13 @@
-// next.config.mjs
-import path from "path";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  sassOptions: {
-    includePaths: [path.join(__dirname, "src/assets/sass")],
+  compiler: {
+    styledComponents: true,
   },
-  
-  webpack: (config, { dev }) => {
+  experimental: {
+    ppr: true,
+  },
+  webpack: (config, { dev, isServer }) => {
     if (!dev) {
       config.plugins = config.plugins.filter(
         (plugin) => plugin.constructor.name !== "ReactFreshWebpackPlugin"
@@ -24,11 +19,11 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "rpdiamondsandjewellery-staging.s3.ap-southeast-1.amazonaws.com",
+        protocol: 'https',
+        hostname: 'rpdiamondsandjewellery-staging.s3.ap-southeast-1.amazonaws.com',
       },
     ],
-    formats: ["image/webp", "image/avif"],
+    formats: ['image/webp', 'image/avif'],
   },
 };
 
