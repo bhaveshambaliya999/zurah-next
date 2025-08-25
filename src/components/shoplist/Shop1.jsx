@@ -57,7 +57,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Skeleton from "react-loading-skeleton";
 import DIYSetupAP from "./DIYSetupAP";
 import Image from "next/image";
-import NotFoundImg from "../../assets/images/RecordNotfound.png";
 
 export default function Shop1() {
   //State Declerations
