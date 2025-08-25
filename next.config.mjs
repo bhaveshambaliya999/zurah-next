@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  webpack: (config, { dev, isServer }) => {
+  webpack: (config, { dev }) => {
     if (!dev) {
       config.plugins = config.plugins.filter(
         (plugin) => plugin.constructor.name !== "ReactFreshWebpackPlugin"
@@ -21,4 +21,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig; // ✅ use CommonJS
+module.exports = nextConfig; // ✅ CommonJS
