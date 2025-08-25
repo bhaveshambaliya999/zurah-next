@@ -1,12 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // compiler: {
-  //   styledComponents: true,
-  // },
-  // experimental: {
-  //   // ppr: true,
-  // },
   webpack: (config, { dev, isServer }) => {
     if (!dev) {
       config.plugins = config.plugins.filter(
@@ -27,4 +21,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig; // ✅ use CommonJS
