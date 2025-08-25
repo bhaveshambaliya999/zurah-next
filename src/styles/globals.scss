@@ -1,5 +1,5 @@
-@use "../Assets/css/plugins/swiper.min.css" as *;
-@use "../assets/sass/style" as *;
+@import "../assets/css/plugins/swiper.min.css" ;
+@import "../assets/sass/style.scss";
 
 //! Font Size
 .fs-2 {
