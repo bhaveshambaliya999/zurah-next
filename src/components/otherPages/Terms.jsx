@@ -9,7 +9,7 @@ import { isEmpty } from "@/CommanFunctions/commanFunctions";
 import { useRouter } from "next/router";
 import { useParams } from "next/navigation";
 import Image from "next/image";
-import NotFoundImg from "../../assets/images/RecordNotfound.png";
+// import NotFoundImg from "../../assets/images/RecordNotfound.png";
 
 export default function Terms() {
   const { policyName } = useParams();
@@ -77,7 +77,7 @@ export default function Terms() {
         ) : (
           !loader && (
             <div className="d-flex justify-content-center w-100 not-found">
-              <Image src={NotFoundImg} loading="lazy" width={500} height={500} alt="Record Not found" />
+              <Image src="/assets/images/RecordNotfound.png" loading="lazy" width={500} height={500} alt="Record Not found" />
             </div>
           )
         )}

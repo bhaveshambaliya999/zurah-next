@@ -1211,8 +1211,7 @@ export default function Shop1() {
             : loader === false &&
               orignalData?.length === 0 && (
                 <div className="d-flex justify-content-center w-100">
-                  <Image
-                    src={NotFoundImg}
+                   <img src="/assets/images/RecordNotfound.png"
                     loading="lazy"
                     width={500}
                     height={500}

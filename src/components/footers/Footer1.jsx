@@ -16,7 +16,7 @@ import { toast } from "react-toastify";
 import { isEmpty, RandomId } from "../../CommanFunctions/commanFunctions";
 import Features from "../common/features/Features";
 import Image from "next/image";
-import paymentGateways from "../../assets/images/payment-options.png";
+// import paymentGateways from "../../assets/images/payment-options.png";
 import { FormSelect } from "react-bootstrap"
 
 export default function Footer1() {
@@ -476,14 +476,14 @@ export default function Footer1() {
             <div className="mt-4">
               <strong className="fw-medium sub-menu__title text-uppercase mb-3">Secure payments</strong>
               <p className="my-2 payment-options">
-                <Image
+                {/* <Image
                   loading="lazy"
                   width={324}
                   height={38}
                   src={paymentGateways}
                   alt="Acceptable payment gateways"
                   className="mw-100"
-                />
+                /> */}
               </p>
             </div>
           </div>
