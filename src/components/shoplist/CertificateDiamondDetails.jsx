@@ -10,8 +10,7 @@ import { useContextElement } from "@/context/Context";
 import ShareComponent from "../common/ShareComponent";
 import Loader from "@/CommanUIComp/Loader/Loader";
 import Slider4 from "../singleProduct/sliders/Slider4";
-import GIA from "@/assets/images/GIA.jpg";
-import HRD from "@/assets/images/HRD.jpg";
+
 import IGI from "@/assets/images/IGI.jpg";
 import video from "@/assets/images/video.png";
 import { toast } from "react-toastify";
