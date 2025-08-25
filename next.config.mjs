@@ -2,6 +2,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  sassOptions: {
+    includePaths: [path.join(__dirname, "src/assets/sass")],
+  },
   webpack: (config, { dev }) => {
     if (!dev) {
       config.plugins = config.plugins.filter(
