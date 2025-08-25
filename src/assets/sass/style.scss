@@ -1,6 +1,6 @@
-@import "bootstrap/bootstrap";
-@import "bootstrap-slider/bootstrap-slider.scss";
-@import "swiper/css";
+@use "bootstrap/bootstrap" as *;
+@use  "bootstrap-slider/bootstrap-slider.scss"  as *;
+@use  "swiper/css"  as *;
 
 @import "settings/variables";
 @import "settings/helpers";
