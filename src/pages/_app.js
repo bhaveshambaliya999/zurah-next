@@ -29,7 +29,7 @@ const ShopFilter = dynamic(() => import("@/components/asides/ShopFilter"), { ssr
 const ProductAdditionalInformation = dynamic(() => import("@/components/asides/ProductAdditionalInformation"), { ssr: false });
 
 // CSS Imports
-import "@/styles/globals.scss";
+import "../styles/globals.scss";
 
 
 // Constants

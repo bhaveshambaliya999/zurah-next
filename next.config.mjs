@@ -7,6 +7,9 @@ const nextConfig = {
   // experimental: {
   //   ppr: true,
   // },
+  sassOptions: {
+    includePaths: [path.join(process.cwd(), "src/assets/sass"), "node_modules"],
+  },
   webpack: (config, { dev, isServer }) => {
     if (!dev) {
       config.plugins = config.plugins.filter(
