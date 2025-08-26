@@ -6,7 +6,7 @@
 @import "~swiper/css";
 
 // 3. Settings / Variables / Mixins
-@use "./settings/variables" as vars;
+@import "./settings/variables";
 @import "./settings/helpers";
 @import "./settings/theme";
 @import "./settings/typography";
