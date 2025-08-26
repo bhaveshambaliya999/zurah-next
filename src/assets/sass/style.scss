@@ -1,17 +1,22 @@
+// 1. SCSS modules
 @use "bootstrap/scss/bootstrap" as *;
+
+// 2. External CSS libraries
 @import "~bootstrap-slider/dist/css/bootstrap-slider.css";
 @import "~swiper/css";
 
+// 3. Settings / Variables / Mixins
 @import "settings/variables";
 @import "settings/helpers";
 @import "settings/theme";
 @import "settings/typography";
-
 @import "mixins/mixins";
-
 @import "settings/animations";
+
+// 4. Layouts
 @import "layout/layout";
 
+// 5. Components
 @import "components/close";
 @import "components/accordions";
 @import "components/tabs";
@@ -28,8 +33,10 @@
 @import "components/modals";
 @import "components/effects";
 
+// 6. Menu
 @import "menu/menu";
 
+// 7. Sections
 @import "sections/Header/header";
 @import "sections/Footer/footer";
 @import "sections/Footer/footer-mobile-fixed";
@@ -56,6 +63,8 @@
 @import "sections/LoginRegister/login-register";
 @import "sections/PageNotFound/page-not-found";
 @import "sections/ComingSoon/coming-soon";
+
+// 8. Custom styles / fonts
 @import "./font.scss";
 @import "./custom.scss";
-@import "./icon.scss"
+@import "./icon.scss";
