@@ -1,5 +1,5 @@
 @use "bootstrap/scss/bootstrap" as *;
-@use "bootstrap-slider/dist/css/bootstrap-slider.css" as *;
+@import "~bootstrap-slider/dist/css/bootstrap-slider.css";
 @use  "swiper/css"  as *;
 
 @import "settings/variables";
