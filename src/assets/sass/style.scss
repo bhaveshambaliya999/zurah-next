@@ -1,70 +1,71 @@
-// 1. SCSS modules
+// 1. Your variables first
+@use "./settings/variables" as *;
+
+// 2. Bootstrap
 @use "bootstrap/scss/bootstrap" as *;
 
-// 2. External CSS libraries
+// 3. External CSS
 @import "~bootstrap-slider/dist/css/bootstrap-slider.css";
 @import "~swiper/css";
 
-// 3. Settings / Variables / Mixins
-@import "./settings/variables";
-@import "./settings/helpers";
-@import "./settings/theme";
-@import "./settings/typography";
-@import "mixins/mixins";
-@import "./settings/animations";
+// 4. Mixins and helpers
+@use "./settings/helpers" as *;
+@use "./settings/theme" as *;
+@use "./settings/typography" as *;
+@use "./mixins/mixins" as *;
+@use "./settings/animations" as *;
 
-// 4. Layouts
-@import "layout/layout";
+// 5. Layouts & Components
+@use "./layout/layout" as *;
+@use "./components/close" as *;
+@use "./components/accordions" as *;
+@use "./components/tabs" as *;
+@use "./components/checkbox" as *;
+@use "./components/tables" as *;
+@use "./components/alert" as *;
+@use "./components/buttons" as *;
+@use "./components/forms" as *;
+@use "./components/progressbar" as *;
+@use "./components/product-card" as *;
+@use "./components/aside-popup" as *;
+@use "./components/search-popup" as *;
+@use "./components/cart-drawer" as *;
+@use "./components/modals" as *;
+@use "./components/effects" as *;
 
-// 5. Components
-@import "components/close";
-@import "components/accordions";
-@import "components/tabs";
-@import "components/checkbox";  
-@import "components/tables";
-@import "components/alert";
-@import "components/buttons";
-@import "components/forms";
-@import "components/progressbar";
-@import "components/product-card";
-@import "components/aside-popup";
-@import "components/search-popup";
-@import "components/cart-drawer";
-@import "components/modals";
-@import "components/effects";
 
 // 6. Menu
-@import "menu/menu";
+@use "./menu/menu" as *;
 
 // 7. Sections
-@import "sections/Header/header";
-@import "sections/Footer/footer";
-@import "sections/Footer/footer-mobile-fixed";
-@import "sections/Slideshow/slideshow";
-@import "sections/CollectionsGrid/collections-grid";
-@import "sections/ProductsGrid/products-grid";
-@import "sections/DealTimer/deal-timer";
-@import "sections/ProductsCarousel/products-carousel";
-@import "sections/Instagram/instagram";
-@import "sections/ServicePromotion/service-promotion";
-@import "sections/ShopBanner/shop-banner";
-@import "sections/ShopAccessories/shop-accessories";
-@import "sections/ShopAccessories/shop-pagination";
-@import "sections/ShopSidebar/shop-sidebar";
-@import "sections/Newsletter/newsletter";
-@import "sections/ProductSingle/product-single";
-@import "sections/ShopCheckout/shop-checkout";
-@import "sections/MyAccount/my-account";
-@import "sections/Blog/blog";
-@import "sections/About/about";
-@import "sections/GoogleMap/google-map";
-@import "sections/ContactUs/contact-us";
-@import "sections/StoreLocation/store-location";
-@import "sections/LoginRegister/login-register";
-@import "sections/PageNotFound/page-not-found";
-@import "sections/ComingSoon/coming-soon";
+@use "./sections/Header/header"  as *;
+@use "./sections/Footer/footer"  as *;
+@use "./sections/Footer/footer-mobile-fixed"  as *;
+@use "./sections/Slideshow/slideshow"  as *;
+@use "./sections/CollectionsGrid/collections-grid"  as *;
+@use "./sections/ProductsGrid/products-grid"  as *;
+@use "./sections/DealTimer/deal-timer"  as *;
+@use "./sections/ProductsCarousel/products-carousel" as *;
+@use "./sections/Instagram/instagram"  as *;
+@use "./sections/ServicePromotion/service-promotion" as *;
+@use "./sections/ShopBanner/shop-banner"  as *;
+@use "./sections/ShopAccessories/shop-accessories" as *;
+@use "./sections/ShopAccessories/shop-pagination" as *;
+@use "./sections/ShopSidebar/shop-sidebar" as *;
+@use "./sections/Newsletter/newsletter"  as *;
+@use "./sections/ProductSingle/product-single" as *;
+@use "./sections/ShopCheckout/shop-checkout" as *;
+@use "./sections/MyAccount/my-account" as *;
+@use "./sections/Blog/blog" as *;
+@use "./sections/About/about" as *;
+@use "./sections/GoogleMap/google-map" as *;
+@use "./sections/ContactUs/contact-us" as *;
+@use "./sections/StoreLocation/store-location" as *;
+@use "./sections/LoginRegister/login-register" as *;
+@use "./sections/PageNotFound/page-not-found" as *;
+@use "./sections/ComingSoon/coming-soon" as *;
 
-// 8. Custom styles / fonts
-@import "./font.scss";
-@import "./custom.scss";
-@import "./icon.scss";
+// 8. Fonts & Custom styles
+@use "./font" as *;
+@use "./custom" as *;
+@use "./icon" as *;
