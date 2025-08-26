@@ -6,12 +6,12 @@
 @import "~swiper/css";
 
 // 3. Settings / Variables / Mixins
-@import "settings/variables";
-@import "settings/helpers";
-@import "settings/theme";
-@import "settings/typography";
+@import "./settings/variables";
+@import "./settings/helpers";
+@import "./settings/theme";
+@import "./settings/typography";
 @import "mixins/mixins";
-@import "settings/animations";
+@import "./settings/animations";
 
 // 4. Layouts
 @import "layout/layout";
