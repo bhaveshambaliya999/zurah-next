@@ -1,3 +1,5 @@
+import path from 'path';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -30,9 +32,9 @@ const nextConfig = {
     unoptimized: true,
   },
   sassOptions: {
-    includePaths: ['./assets/sass'],
+    includePaths: [path.join(process.cwd(), 'src')],
     prependData: `@import "settings/variables"; @import "settings/mixins";`,
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;
