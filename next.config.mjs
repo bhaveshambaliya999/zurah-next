@@ -32,8 +32,8 @@ const nextConfig = {
     unoptimized: true,
   },
   sassOptions: {
-    includePaths: [path.join(process.cwd(), 'src')],
+    includePaths: [path.join(process.cwd(), 'src'), path.join(process.cwd(), 'assets/sass')],
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig
