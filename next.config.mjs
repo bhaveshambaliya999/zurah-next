@@ -31,9 +31,6 @@ const nextConfig = {
     formats: ['image/webp', 'image/avif'],
     unoptimized: true,
   },
-  sassOptions: {
-    includePaths: [path.join(process.cwd(), 'src'), path.join(process.cwd(), 'assets/sass')],
-  },
 }
 
 export default nextConfig
