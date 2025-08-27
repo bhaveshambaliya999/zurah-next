@@ -7,9 +7,9 @@
 
 // scss-docs-start import-stack
 // Configuration
+@import "../settings/variables";
 @import "functions";
 @import "variables";
-@import "../settings/variables"; // Uomo variables
 @import "mixins";
 @import "utilities";
 

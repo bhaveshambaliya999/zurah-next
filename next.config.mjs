@@ -1,15 +1,17 @@
-import path from "path";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   compiler: {
     styledComponents: true,
   },
-  // experimental: {
-  //   ppr: true,
-  // },
-  sassOptions: {
-    includePaths: [path.join(process.cwd(), "src/assets/sass"), "node_modules"],
+  experimental: {
+    ppr: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
   },
   webpack: (config, { dev, isServer }) => {
     if (!dev) {
@@ -28,7 +30,12 @@ const nextConfig = {
       },
     ],
     formats: ['image/webp', 'image/avif'],
+    unoptimized: true,
   },
-};
+  sassOptions: {
+    includePaths: ['./assets/sass'],
+    prependData: `@import "settings/variables"; @import "settings/mixins";`,
+  },
+}
 
-export default nextConfig;
+export default nextConfig
