@@ -7,39 +7,8 @@
 
 // scss-docs-start import-stack
 // Configuration
+@import "~bootstrap/scss/bootstrap";
+
 @import "../settings/variables";
-@import "functions";
-@import "variables";
-@import "mixins";
-@import "utilities";
-
-// Layout & components
-@import "root";
-@import "reboot";
-@import "type";
-@import "images";
-@import "containers";
-@import "transitions";
-@import "dropdown";
-@import "button-group";
-@import "navbar";
-@import "card";
-@import "accordion";
-@import "breadcrumb";
-@import "pagination";
-@import "badge";
-@import "progress";
-@import "list-group";
-@import "toasts";
-@import "modal";
-@import "tooltip";
-@import "popover";
-@import "carousel";
-@import "spinners";
-
-// Helpers
-@import "helpers";
-
-// Utilities
-@import "utilities/api";
+@import "../settings/mixins";
 // scss-docs-end import-stack
