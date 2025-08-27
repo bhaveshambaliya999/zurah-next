@@ -4,9 +4,6 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  experimental: {
-    ppr: true,
-  },
   eslint: {
     ignoreDuringBuilds: true,
   },
