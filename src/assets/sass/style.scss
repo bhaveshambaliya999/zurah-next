@@ -1,13 +1,11 @@
-// 1. Your variables first
-@use "./settings/variables" as *;
-
-// 2. Bootstrap
-@use "bootstrap/scss/bootstrap" as *;
-
-// 3. External CSS
+// // External CSS imports
 @import "~bootstrap-slider/dist/css/bootstrap-slider.css";
 @import "~swiper/css";
+// variables SCSS
+@use "./settings/variables" as *;
 
+// Bootstrap
+@use "bootstrap/scss/bootstrap" as *;
 // 4. Mixins and helpers
 @use "./settings/helpers" as *;
 @use "./settings/theme" as *;
