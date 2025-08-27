@@ -33,7 +33,6 @@ const nextConfig = {
   },
   sassOptions: {
     includePaths: [path.join(process.cwd(), 'src')],
-    prependData: `@import "settings/variables"; @import "settings/mixins";`,
   },
 };
 
