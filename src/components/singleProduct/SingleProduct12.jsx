@@ -63,10 +63,10 @@ import {
   storeSpecData,
 } from "@/Redux/action";
 import DIYSteps from "../shoplist/DIYSteps";
-import GIA from "/assets/images/GIA.jpg";
-import HRD from "/assets/images/HRD.jpg";
-import IGI from "/assets/images/IGI.jpg";
-import video from "/assets/images/video.png";
+import GIA from "/public/assets/images/GIA.jpg";
+import HRD from "/public/assets/images/HRD.jpg";
+import IGI from "/public/assets/images/IGI.jpg";
+import video from "/public/assets/images/video.png";
 import { Rating } from "react-simple-star-rating";
 import Pagination1 from "../common/Pagination1";
 import Slider4 from "./sliders/Slider4";
