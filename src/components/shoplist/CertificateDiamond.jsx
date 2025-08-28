@@ -45,7 +45,6 @@ import CertificateDiamondDetails from "./CertificateDiamondDetails";
 import DIYSteps from "./DIYSteps";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import NotFoundImg from "/assets/images/RecordNotfound.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
@@ -3202,7 +3201,7 @@ export default function CertificateDiamond(props) {
                       diamondAllDataList === undefined) && (
                       <div className="d-flex justify-content-center w-100 not-found">
                         <Image
-                          src={NotFoundImg}
+                          src='/assets/images/RecordNotfound.png'
                           loading="lazy"
                           width={500}
                           height={500}
@@ -3410,7 +3409,7 @@ export default function CertificateDiamond(props) {
                               DiyDiamondData === undefined) && (
                               <div className="d-flex justify-content-center w-100 not-found">
                                 <Image
-                                  src={NotFoundImg}
+                                  src="/assets/images/RecordNotfound.png"
                                   loading="lazy"
                                   width={500}
                                   height={500}

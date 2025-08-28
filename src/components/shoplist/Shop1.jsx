@@ -58,7 +58,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Skeleton from "react-loading-skeleton";
 import DIYSetupAP from "./DIYSetupAP";
 import Image from "next/image";
-import NotFoundImg from "/assets/images/RecordNotfound.png";
 
 export default function Shop1() {
   //State Declerations
@@ -1213,7 +1212,7 @@ export default function Shop1() {
               orignalData?.length === 0 && (
                 <div className="d-flex justify-content-center w-100">
                   <Image
-                    src={NotFoundImg}
+                    src='/assets/images/RecordNotfound.png'
                     loading="lazy"
                     width={500}
                     height={500}
