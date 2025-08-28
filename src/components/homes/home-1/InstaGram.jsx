@@ -56,7 +56,7 @@ export default function InstaGram() {
             {journeyList
               ? journeyList.map((elm, i) => (
                 
-                <Link to={`/dashboard/viewjourney?unique_id=${elm.unique_id}&type=${elm.type ?? 'S'}`} key={i} className="instagram__tile">
+                <Link href={`/dashboard/viewjourney?unique_id=${elm.unique_id}&type=${elm.type ?? 'S'}`} key={i} className="instagram__tile">
                   {/* {console.log(elm)} */}
                   <div
                     // href="https://instagram.com"

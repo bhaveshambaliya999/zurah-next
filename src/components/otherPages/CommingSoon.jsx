@@ -22,6 +22,7 @@ export default function CommingSoon() {
               type="email"
               name="email"
               placeholder="Your email address"
+              autoComplete="username"  
             />
             <button className="btn btn-secondary" type="submit">
               JOIN

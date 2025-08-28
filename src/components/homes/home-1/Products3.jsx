@@ -53,7 +53,7 @@ export default function Products3() {
                         Collection
                       </h3>
                       <Link
-                        to={`/products/${c.vertical_code}/type/${c.product_title
+                        href={`/products/${c.vertical_code}/type/${c.product_title
                           ?.split(" ")
                           .join("-")
                           .toLowerCase()}`}
@@ -116,7 +116,7 @@ export default function Products3() {
                                   ></p>
                                   <h3 className="mb-3">{item.display_name}</h3>
                                   <Link
-                                    to={`/products/${item.vertical_code
+                                    href={`/products/${item.vertical_code
                                       }/type/${item?.collection_name
                                         ?.split(" ")
                                         ?.join("-")

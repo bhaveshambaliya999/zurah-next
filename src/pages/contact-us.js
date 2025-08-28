@@ -10,7 +10,7 @@ import defaultService, { Commanservice } from "@/CommanService/commanService";
 export async function getServerSideProps() {
   const origin = "https://uat-direct.rpdiamondsandjewellery.com";
 
-  const response = await fetch("http://192.168.84.45/sit-ci-api/call/EmbeddedPageMaster", {
+  const response = await fetch("http://192.168.84.28/sit-ci-api/call/EmbeddedPageMaster", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

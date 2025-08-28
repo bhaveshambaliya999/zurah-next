@@ -1,6 +1,7 @@
 "use client";
 
-import { usePathname, useParams, useRouter } from "next/navigation";
+import { usePathname, useParams } from "next/navigation";
+import { useRouter } from "next/router";
 import {
   changeUrl,
   extractNumber,
@@ -1304,7 +1305,6 @@ export default function OrderDetail(props) {
                               }`}
                           >
                             <div className="icon_tick ic_check">
-                              {/* <img src="/assets/images/ic_check.svg" /> */}
                             </div>
                             <div className="timeline__timestamp">
                               <div

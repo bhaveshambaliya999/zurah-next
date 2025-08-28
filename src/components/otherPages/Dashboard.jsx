@@ -28,10 +28,12 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import EditAccount from "./EditAccount";
 
 export default function Dashboard() {
   const pathname = usePathname();
+  const router = useRouter();
   const dispatch = useDispatch();
   const loginDatas = useSelector((state) => state.loginData);
   const { setCartProducts, setWishlistProducts } = useContextElement();
@@ -67,7 +69,7 @@ export default function Dashboard() {
       dispatch(isVerifyModal(false))
       dispatch(verifyMemberId(""))
       // window.location.reload();
-      navigate("/");
+      router.push("/");
     }, 300);
     return dispatch(loginData({}));
   };

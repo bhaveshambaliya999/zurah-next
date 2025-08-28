@@ -50,7 +50,6 @@ export default function Header1() {
   // const selector = useSelector((state) => state);
   const location = useLocation()
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const loginDatas = useSelector((state) => state.loginData);
   const storeEntityIds = useSelector((state) => state.storeEntityId);
   const storeCurrency = useSelector((state) => state.storeCurrency);
@@ -122,7 +121,7 @@ export default function Header1() {
               }
             }
           }
-          navigate(`${location.pathname}${location.search}`)
+          router.replace(`${pathname}${searchParams ? "?" + searchParams.toString() : ""}`);
           setLoader(false);
         } else {
           setLoader(false);

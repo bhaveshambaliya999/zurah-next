@@ -4,7 +4,8 @@ import Pagination1 from "../common/Pagination1";
 import { useCallback, useEffect, useRef, useState } from "react";
 import BreadCumb from "./BreadCumb";
 import Link from "next/link";
-import { useRouter, useParams, usePathname, useSearchParams } from "next/navigation";
+import { useParams, usePathname, useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 import { useContextElement } from "@/context/Context";
 const itemPerRow = [2, 3, 4];
 
@@ -57,6 +58,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Skeleton from "react-loading-skeleton";
 import DIYSetupAP from "./DIYSetupAP";
 import Image from "next/image";
+import NotFoundImg from "@/assets/images/RecordNotfound.png";
 
 export default function Shop1() {
   //State Declerations
@@ -1210,7 +1212,8 @@ export default function Shop1() {
             : loader === false &&
               orignalData?.length === 0 && (
                 <div className="d-flex justify-content-center w-100">
-                   <img src="/assets/images/RecordNotfound.png"
+                  <Image
+                    src={NotFoundImg}
                     loading="lazy"
                     width={500}
                     height={500}

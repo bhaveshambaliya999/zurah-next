@@ -59,7 +59,7 @@ const JourneyCatalogueView = (props) => {
           setDate(formattedDate);
           data[0].data_url =
             window.location.origin +
-            "/Assets/Js/landing.php?og_title=" +
+            "/assets/Js/landing.php?og_title=" +
             encodeURIComponent(data?.[0]?.title) +
             "&og_image=" +
             encodeURIComponent(data?.[0]?.image) +
@@ -95,7 +95,7 @@ const JourneyCatalogueView = (props) => {
         var data = res.data.data;
         data[0].data_url =
           window.location.origin +
-          "/Assets/Js/landing.php?og_title=" +
+          "/assets/Js/landing.php?og_title=" +
           encodeURIComponent(data?.[0]?.title) +
           "&og_image=" +
           encodeURIComponent(data?.[0]?.image) +

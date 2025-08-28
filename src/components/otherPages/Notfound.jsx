@@ -12,7 +12,7 @@ export default function Notfound() {
           that you return to home page.
         </p>
         <Link
-          to={"/"}
+          href={"/"}
           className="btn btn-primary d-flex align-items-center justify-content-center mx-auto"
         >
           GO BACK

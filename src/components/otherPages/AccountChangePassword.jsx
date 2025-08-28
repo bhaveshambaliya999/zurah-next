@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import commanService from "@/CommanService/commanService";
 import Loader from "@/CommanUIComp/Loader/Loader";
 import { loginData } from "@/Redux/action";
@@ -138,6 +138,7 @@ const AccountChangePassword = () => {
                   value={newpasswd}
                   onChange={(e) => changePassWord(e, "new")}
                   required
+                  autocomplete="new-password"
                 />
                 <label htmlFor="customerNameRegisterInput2">
                   New Password *
@@ -174,6 +175,7 @@ const AccountChangePassword = () => {
                   value={reEnterpasswd}
                   onChange={(e) => changePassWord(e, "re-enter")}
                   required
+                  autocomplete="current-password"
                 />
                 <label htmlFor="customerNameRegisterInput3">
                   Confirm Password *

@@ -21,6 +21,7 @@ export default function LoginFormPopup() {
                 type="email"
                 className="form-control form-control_gray"
                 placeholder="name@example.com"
+                autoComplete="username"  
               />
               <label>Username or email address *</label>
             </div>
@@ -33,7 +34,9 @@ export default function LoginFormPopup() {
                 name="password"
                 className="form-control form-control_gray"
                 type="password"
+                aria-label="password"
                 placeholder="********"
+                autoComplete="current-password"
               />
             </div>
 
@@ -101,6 +104,7 @@ export default function LoginFormPopup() {
                 type="email"
                 className="form-control form-control_gray"
                 placeholder="user@company.com"
+                autoComplete="username"  
               />
               <label>Email address *</label>
             </div>
@@ -113,7 +117,9 @@ export default function LoginFormPopup() {
                 name="password"
                 className="form-control form-control_gray"
                 type="password"
+                aria-label="password"
                 placeholder="*******"
+                autoComplete="current-password"
               />
             </div>
 

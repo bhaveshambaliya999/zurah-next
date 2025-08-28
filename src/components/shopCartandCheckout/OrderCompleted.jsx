@@ -40,7 +40,6 @@ export default function OrderCompleted() {
               src={
                 "https://i0.wp.com/css-tricks.com/wp-content/uploads/2020/01/timer-progress-animated.gif?ssl=1"
               }
-              // style={{ width: "650px" }}
             />
           ) : (
             <div className="d-flex justify-content-center">
@@ -57,7 +56,7 @@ export default function OrderCompleted() {
 
               <div className="text-center d-flex justify-content-center gap-5">
                 <Link
-                  to={
+                  href={
                     params.succesOrderId !== "CancelTransaction" &&
                     params.succesOrderId !== "CancelOrder"
                       ? ``
@@ -70,7 +69,7 @@ export default function OrderCompleted() {
                   </button>
                 </Link>
                 <Link
-                  to={
+                  href={
                     params.succesOrderId !== "CancelTransaction" &&
                     params.succesOrderId !== "CancelOrder"
                       ? ``
@@ -105,69 +104,6 @@ export default function OrderCompleted() {
             <h3>Your order is completed!</h3>
             <p>Thank you. Your order has been received.</p>
           </div>
-          {/* 
-          <div className="order-info">
-            <div className="order-info__item">
-              <label>Order Number</label>
-              <span>13119</span>
-            </div>
-            <div className="order-info__item">
-              <label>Date</label>
-              {showDate && <span>{new Date().toLocaleDateString()}</span>}
-            </div>
-            <div className="order-info__item">
-              <label>Total</label>
-
-              <span>${totalPrice && totalPrice + 19}</span>
-            </div>
-            <div className="order-info__item">
-              <label>Paymetn Method</label>
-              <span>Direct Bank Transfer</span>
-            </div>
-          </div>
-          <div className="checkout__totals-wrapper">
-            <div className="checkout__totals">
-              <h3>Order Details</h3>
-              <table className="checkout-cart-items">
-                <thead>
-                  <tr>
-                    <th>PRODUCT</th>
-                    <th>SUBTOTAL</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cartProducts.map((elm, i) => (
-                    <tr key={i}>
-                      <td>
-                        {elm.title} x {elm.quantity}
-                      </td>
-                      <td>${elm.price}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              <table className="checkout-totals">
-                <tbody>
-                  <tr>
-                    <th>SUBTOTAL</th>
-                    <td>${totalPrice}</td>
-                  </tr>
-                  <tr>
-                    <th>SHIPPING</th>
-                    <td>Free shipping</td>
-                  </tr>
-                  <tr>
-                    <th>VAT</th>
-                    <td>${totalPrice && 19}</td>
-                  </tr>
-                  <tr>
-                    <th>TOTAL</th>
-                    <td>${totalPrice && totalPrice + 19}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div> */}
         </div>
       )}{" "}
     </React.Fragment>

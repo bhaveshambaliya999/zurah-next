@@ -45,6 +45,7 @@ import CertificateDiamondDetails from "./CertificateDiamondDetails";
 import DIYSteps from "./DIYSteps";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import NotFoundImg from "@/assets/images/RecordNotfound.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
@@ -1699,12 +1700,12 @@ export default function CertificateDiamond(props) {
     if ((isItemDIY === true && perfumeVertical(isEmpty(sessionStorage.getItem("DIYVertical"))) !== true) || ((isJewelDiy === true || isDiamoDiy === true) && DiySteperDatas?.length > 0)) {
       dispatch(DiySteperData([]))
       dispatch(ActiveStepsDiy(0))
-      navigate("/make-your-customization")
+      router.push("/make-your-customization")
     }
     if (((jewelVertical(isEmpty(sessionStorage.getItem("DIYVertical"))) !== false || isEmpty(sessionStorage.getItem("DIYVertical")) === "") && isDiamoDiy === true) || (isJewelDiy === true && jewelVertical(isEmpty(sessionStorage.getItem("DIYVertical"))) !== true || isDiamoDiy === true && (jewelVertical(isEmpty(sessionStorage.getItem("DIYVertical"))) === true || perfumeVertical(isEmpty(sessionStorage.getItem("DIYVertical"))) === true))) {
       dispatch(DiySteperData([]))
       dispatch(ActiveStepsDiy(0))
-      navigate("/make-your-customization")
+      router.push("/make-your-customization")
     }
   }, [isDiamoDiy, isJewelDiy, isItemDIY])
 
@@ -3200,7 +3201,8 @@ export default function CertificateDiamond(props) {
                     : loader === false && skeletonLoader === false && (diamondAllDataList?.length === 0 ||
                       diamondAllDataList === undefined) && (
                       <div className="d-flex justify-content-center w-100 not-found">
-                         <img src="/assets/images/RecordNotfound.png"
+                        <Image
+                          src={NotFoundImg}
                           loading="lazy"
                           width={500}
                           height={500}
@@ -3407,7 +3409,8 @@ export default function CertificateDiamond(props) {
                             (DiyDiamondData?.length === 0 ||
                               DiyDiamondData === undefined) && (
                               <div className="d-flex justify-content-center w-100 not-found">
-                                 <img src="/assets/images/RecordNotfound.png"
+                                <Image
+                                  src={NotFoundImg}
                                   loading="lazy"
                                   width={500}
                                   height={500}

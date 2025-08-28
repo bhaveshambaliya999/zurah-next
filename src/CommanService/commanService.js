@@ -5,14 +5,14 @@ function getEnv(origin) {
   const isBrowser = typeof window !== "undefined";
   let env = {};
 
-  const source = origin || (isBrowser ? window.location.origin : origin);
+  const source = origin || (isBrowser ? window.location.origin : "https://uat-direct.rpdiamondsandjewellery.com");
 
   if (source?.includes("localhost")) {
     env = {
       imageUrl: "http://192.168.84.21:8080",
       baseUrl1: "http://192.168.84.21:8080/api/call",
-      baseUrl2: "http://192.168.84.45/sit-ci-api/call",
-      domain: "https://uat-direct.rpdiamondsandjewellery.com",
+      baseUrl2: "http://192.168.84.28/sit-ci-api/call",
+      domain: 'https://uat-direct.rpdiamondsandjewellery.com'
     };
   } else if (source?.includes("staging")) {
     env = {
@@ -23,16 +23,16 @@ function getEnv(origin) {
     };
   } else if (source?.includes("uat")) {
     env = {
-      imageUrl: "https://apiuat-ecom-store.upqor.com",
+      imageUrl: "http://192.168.84.21:8080",
       baseUrl1: "http://192.168.84.21:8080/api/call",
-      baseUrl2: "http://192.168.84.45/sit-ci-api/call",
+      baseUrl2: "http://192.168.84.28/sit-ci-api/call",
       domain: source,
     };
   } else {
     env = {
-      imageUrl: "https://apiuat-ecom-store.upqor.com",
+      imageUrl: "http://192.168.84.21:8080",
       baseUrl1: "http://192.168.84.21:8080/api/call",
-      baseUrl2: "http://192.168.84.45/sit-ci-api/call",
+      baseUrl2: "http://192.168.84.28/sit-ci-api/call",
       domain: source,
     };
   }

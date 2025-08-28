@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import commanService from "../../CommanService/commanService";
 import {
@@ -16,11 +17,12 @@ import { toast } from "react-toastify";
 import { isEmpty, RandomId } from "../../CommanFunctions/commanFunctions";
 import Features from "../common/features/Features";
 import Image from "next/image";
-// import paymentGateways from "../../assets/images/payment-options.png";
+import paymentGateways from "@/Assets/images/payment-options.png";
 import { FormSelect } from "react-bootstrap"
 
 export default function Footer1() {
  //State Declerations
+ const isRefCall = useRef(false)
   const loginDatas = useSelector((state) => state.loginData);
   const storeEntityIds = useSelector((state) => state.storeEntityId);
   const storeCurrencys = useSelector((state) => state.storeCurrency);
@@ -164,9 +166,10 @@ export default function Footer1() {
   //call of function of footerData
   useEffect(() => {
     const data = storeEntityIds;
-    if (Object.keys(data).length > 0) {
+    if (Object.keys(data).length > 0 && !isRefCall.current) {
       footerData(data);
       setFooterContent([]);
+      isRefCall.current = true
     }
   }, [storeEntityIds, loginDatas, storeCurrencyDatas]);
 
@@ -194,7 +197,7 @@ export default function Footer1() {
             dispatch(DiySteperData([]))
             dispatch(ActiveStepsDiy(0));
             sessionStorage.removeItem("DIYVertical");
-            navigate("/make-your-customization")
+            router.pus("/make-your-customization")
           }
         }
       })
@@ -212,7 +215,7 @@ export default function Footer1() {
     } else {
       updateCartCurrency(data?.[0].mp_store_price);
       dispatch(storeCurrency(data?.[0]?.mp_store_price));
-      navigate(pathname.includes("_checkout") ? "/shop_cart" : pathname)
+      router.push(pathname.includes("_checkout") ? "/shop_cart" : pathname)
       window.scroll(0, 0);
     }
   };
@@ -235,7 +238,7 @@ export default function Footer1() {
             setEmail("");
             toast.success(res.data.message);
             if (!isLogin) {
-              navigate("/login_register");
+              router.push("/login_register");
               dispatch(isRegisterModal(false));
               dispatch(isLoginModal(true));
             }
@@ -265,7 +268,7 @@ export default function Footer1() {
     <Loader />
   ) : (
     <footer className="footer footer_type_1 pb-5 pb-sm-0">
-      <div className="footer-top container py-0">
+      <div className="footer-top container">
           <Features/>
       </div>
       <div className="footer-middle container">
@@ -288,6 +291,7 @@ export default function Footer1() {
                                   height={50}
                                   alt="B2C Footer Logo"
                                   className="logo__image d-block"
+                                  priority fetchPriority="high"
                                 />
                               </Link>
                             </div>
@@ -462,6 +466,7 @@ export default function Footer1() {
                   setEmail(event.target.value);
                 }}
                 required
+                autoComplete="username"  
               />
               <input
                 className="btn-link fw-medium bg-white position-absolute top-0 end-0 h-100"
@@ -476,14 +481,13 @@ export default function Footer1() {
             <div className="mt-4">
               <strong className="fw-medium sub-menu__title text-uppercase mb-3">Secure payments</strong>
               <p className="my-2 payment-options">
-                {/* <Image
+                <Image
                   loading="lazy"
                   width={324}
-                  height={38}
+                  height={27}
                   src={paymentGateways}
                   alt="Acceptable payment gateways"
-                  className="mw-100"
-                /> */}
+                />
               </p>
             </div>
           </div>

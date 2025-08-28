@@ -17,7 +17,7 @@ export async function getServerSideProps(context) {
   try {
     // Get Store Data
     const response = await fetch(
-      "http://192.168.84.45/sit-ci-api/call/EmbeddedPageMaster",
+      "http://192.168.84.28/sit-ci-api/call/EmbeddedPageMaster",
       {
         method: "POST",
         headers: {
@@ -80,7 +80,7 @@ export async function getServerSideProps(context) {
     // Get product detail page data if PV variant
     if (slug?.length > 0 && variantId?.includes("PV")) {
       const singleProductDetailData = await fetch(
-        "http://192.168.84.45/sit-ci-api/call/EmbeddedPageMaster",
+        "http://192.168.84.28/sit-ci-api/call/EmbeddedPageMaster",
         {
           method: "POST",
           headers: {

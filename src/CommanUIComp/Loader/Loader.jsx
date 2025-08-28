@@ -1,11 +1,12 @@
 import React from 'react'
+import styles from "./loader.module.scss";
 import { Oval } from 'react-loader-spinner';
 
 const Loader = () => {
     return (
         <>
             <section id="loader">
-                <div className="loader">
+                <div className={styles["loader"]}>
                     <Oval
                         height={100}
                         width={100}

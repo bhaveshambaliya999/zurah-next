@@ -3,7 +3,7 @@ import Loader from "@/CommanUIComp/Loader/Loader";
 import { isLoginModal, isRegisterModal } from "@/Redux/action";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import { toast } from "react-toastify";
 
@@ -180,6 +180,7 @@ export default function ResetPassword() {
                   placeholder="Email address *"
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  autoComplete="username"  
                 />
                 <label>Email address *</label>
               </div>

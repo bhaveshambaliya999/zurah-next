@@ -271,6 +271,7 @@ export default function Contact(props) {
                   value={email}
                   onChange={(e) => handleChangeContactUs(e, "email")}
                   required
+                  autoComplete="username"  
                 />
                 <label htmlFor="contact_us_email">Email address *</label>
               </div>

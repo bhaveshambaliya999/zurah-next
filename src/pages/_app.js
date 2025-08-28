@@ -1,4 +1,4 @@
-import Script from "next/script";
+
 const Header1 = dynamic(() => import("@/components/headers/Header9"), { ssr: false });
 const Footer1 = dynamic(() => import("@/components/footers/Footer1"), { ssr: false });
 import { Provider, useDispatch, useSelector } from "react-redux";
@@ -29,7 +29,8 @@ const ShopFilter = dynamic(() => import("@/components/asides/ShopFilter"), { ssr
 const ProductAdditionalInformation = dynamic(() => import("@/components/asides/ProductAdditionalInformation"), { ssr: false });
 
 // CSS Imports
-import "../styles/globals.scss";
+import "@/styles/globals.scss";
+import Script from "next/script";
 
 
 // Constants
@@ -60,7 +61,7 @@ function InnerApp({ Component, pageProps }) {
     async (attempt = 1) => {
       try {
         const response = await fetch(
-          "http://192.168.84.45/sit-ci-api/call/EmbeddedPageMaster",
+          "http://192.168.84.28/sit-ci-api/call/EmbeddedPageMaster",
           {
             method: "POST",
             headers: {
@@ -146,11 +147,9 @@ function InnerApp({ Component, pageProps }) {
   if (!isStoreDataValid) {
     console.warn("⚠️ Store data is invalid or incomplete.");
   }
-
   return (
     <>
-      {/* Scripts */}
-      <Script
+      {/* <Script
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-R6XBQY8QGN"
       />
@@ -164,14 +163,14 @@ function InnerApp({ Component, pageProps }) {
             gtag('config', 'G-R6XBQY8QGN');
           `,
         }}
-      />
-      <Script id="jquery" src="https://code.jquery.com/jquery-3.7.1.min.js" strategy="beforeInteractive" />
-      <Script
+      /> */}
+      {/* <Script id="jquery" src="https://code.jquery.com/jquery-3.7.1.min.js" strategy="beforeInteractive" /> */}
+      {/* <Script
         id="tangiblee"
         async
         src="https://cdn.tangiblee.com/integration/3.1/managed/www.tangiblee-integration.com/revision_1/variation_original/tangiblee-bundle.min.js"
-      />
-      {/* <MobileHeader /> */}
+      /> */}
+      <MobileHeader />
       <ToastContainer />
       <Header1 storeData={storeEntityIds} />
       <Component {...pageProps} />

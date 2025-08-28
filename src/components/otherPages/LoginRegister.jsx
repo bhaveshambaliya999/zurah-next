@@ -3,7 +3,8 @@ import commanService from "@/CommanService/commanService";
 import { isLoginModal, isRegisterModal, isVerifyModal, loginData } from "@/Redux/action";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import Select from "react-select";
 import { toast } from "react-toastify";
@@ -215,7 +216,7 @@ export default function LoginRegister() {
             dispatch(loginData(Registerdata));
             sessionStorage.setItem("loginData",JSON.stringify(Registerdata))
 
-            navigate("/");
+            router.push("/");
             setLoading(false);
             toast.success(res.data.message)
           } else {
@@ -371,6 +372,7 @@ export default function LoginRegister() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
+                      autoComplete="username"  
                     />
                     <label>Email address *</label>
                   </div>
@@ -387,6 +389,8 @@ export default function LoginRegister() {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
+                      autoComplete="current-password"
+                      aria-label="password"
                     />
                     <label htmlFor="customerPasswodInput">Password *</label>
                   </div>
@@ -493,6 +497,7 @@ export default function LoginRegister() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
+                    autoComplete="username"  
                   />
                   <label htmlFor="customerEmailRegisterInput">
                     Email address *

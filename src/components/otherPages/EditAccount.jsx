@@ -300,6 +300,7 @@ export default function EditAccount() {
                     placeholder="Email address *"
                     defaultValue={pEmail}
                     required
+                    autoComplete="username"  
                   />
                   <label htmlFor="customerEmailRegisterInput3">
                     Email address *

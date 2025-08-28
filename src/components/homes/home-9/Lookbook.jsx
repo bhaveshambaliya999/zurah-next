@@ -1,5 +1,4 @@
 import Link from "next/link";
-import CountDownComponent from "../../../components/common/CountDownComponent";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../../CommanUIComp/Loader/Loader";
 import {

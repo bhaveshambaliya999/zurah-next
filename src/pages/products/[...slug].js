@@ -18,7 +18,7 @@ export async function getServerSideProps(context) {
   try {
     // 1️⃣ Fetch store data
     const storeRes = await fetch(
-      "http://192.168.84.45/sit-ci-api/call/EmbeddedPageMaster",
+      "http://192.168.84.28/sit-ci-api/call/EmbeddedPageMaster",
       {
         method: "POST",
         headers: { "Content-Type": "application/json", origin, prefer: origin },
@@ -38,7 +38,7 @@ export async function getServerSideProps(context) {
     // 2️⃣ Fetch PV variant SEO if slug.length > 1
     if (slug.length > 1 && variantId?.includes("PV")) {
       const productRes = await fetch(
-        "http://192.168.84.45/sit-ci-api/call/EmbeddedPageMaster",
+        "http://192.168.84.28/sit-ci-api/call/EmbeddedPageMaster",
         {
           method: "POST",
           headers: {

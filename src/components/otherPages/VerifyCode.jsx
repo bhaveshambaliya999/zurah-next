@@ -13,7 +13,8 @@ import {
 } from "@/Redux/action";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 
 const VerifyCode = (props) => {
@@ -70,11 +71,11 @@ const VerifyCode = (props) => {
         if (res.data.success === 1) {
           favouriteCartCount(logindata);
         //   sessionStorage.setItem("storeUrl", window.location.pathname);
-          navigate("/");
+         router.push("/");
         } else {
           favouriteCartCount(logindata);
         //   sessionStorage.setItem("storeUrl", window.location.pathname);
-          navigate("/");
+          router.push("/");
         }
       })
       .catch(() => {});
@@ -156,7 +157,7 @@ const VerifyCode = (props) => {
           const logindata = response.data.data;
           dispatch(loginData(logindata));
           sessionStorage.setItem("loginData",JSON.stringify(logindata))
-          navigate("/");
+          router.push("/");
           toast.success(response.data.message);
           guestToFavoriteMember(logindata);
           if (DefaultBillingAddresss.length === 0) {

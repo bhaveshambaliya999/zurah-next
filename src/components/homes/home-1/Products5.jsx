@@ -65,8 +65,8 @@ export default function Products5() {
               <SwiperSlide key={i} className="swiper-slide product-card">
                 <div className="pc__img-wrapper">
                   <Link
-                    // to={`blog-details/${elm.unique_id}/${elm.category_id}`}
-                    to={`/blog-details/${changeUrl(elm?.title)}`}
+                    // href={`blog-details/${elm.unique_id}/${elm.category_id}`}
+                    href={`/blog-details/${changeUrl(elm?.title)}`}
                     state={{
                       params: {
                         unique_id: elm.unique_id,

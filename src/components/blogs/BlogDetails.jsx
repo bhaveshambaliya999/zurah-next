@@ -1,11 +1,13 @@
-import React, { useCallback, useEffect, useState, useMemo  } from "react";
+import React, { useCallback, useEffect, useState, useMemo, useRef  } from "react";
 import { useSelector } from "react-redux";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import commanService from "@/CommanService/commanService";
 import { changeUrl } from "@/CommanFunctions/commanFunctions";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 export default function BlogDetails() {
+  const isRefCall = useRef(false)
   const router = useRouter();
   const pathname = usePathname();
   const storeEntityIds = useSelector((state) => state.storeEntityId);
@@ -120,8 +122,9 @@ export default function BlogDetails() {
   };
 
   useEffect(() => {
-    if(Object.keys(storeEntityIds).length>0){
+    if(Object.keys(storeEntityIds).length>0 && !isRefCall.current){
       blogDetailData();
+      isRefCall.current = true;
     }
   }, [uniqueId, blogDetailData]);
 
@@ -147,7 +150,7 @@ export default function BlogDetails() {
     <main className="page-wrapper">
       <div className="mb-4 pb-4"></div>
       <section className="blog-page blog-single container">
-        {selectedBlogData.map((blog, i) => {
+        {selectedBlogData?.map((blog, i) => {
           let dates = new Date(blog.created_at);
           let newDate = new Date(dates).toLocaleDateString("en-GB", {
             day: "numeric",
@@ -171,7 +174,7 @@ export default function BlogDetails() {
                   <Image
                     loading="lazy"
                     className="w-100 h-auto d-block"
-                    src={blog.featured_image}
+                    src={blog?.featured_image || ""}
                     width="1410"
                     height="550"
                     alt="image"

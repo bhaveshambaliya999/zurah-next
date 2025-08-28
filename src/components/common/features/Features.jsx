@@ -15,8 +15,7 @@ export default function Features() {
         {servicePromotions.map((elm, i) => (
           <div key={i} className="col-md-4 mb-5 d-flex align-items-center justify-content-center gap-3">
             <div className="service-promotion__icon">
-              <i className={elm.icon}>
-              </i>
+              <i className={elm.icon} aria-hidden="true"></i>
             </div>
             <div className="service-promotion__content-wrap">
               <h3 className="service-promotion__title h6 text-uppercase mb-1">
@@ -28,9 +27,7 @@ export default function Features() {
               </div>
           </div>
         ))}
-        {/* <!-- /.col-md-4 text-center--> */}
       </div>
-      {/* <!-- /.row --> */}
     </section>
   );
 }

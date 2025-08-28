@@ -95,6 +95,9 @@ $nav-mobile-size: 35px;
 
 .slideshow-bg {
   height: 100%;
+  width: 100%;
+  position: relative;
+  display: block;
 }
 
 .slideshow-bg__img {
@@ -119,11 +122,6 @@ $nav-mobile-size: 35px;
   }
 }
 
-// .character_bg {
-//   max-width: 140%;
-//   width: 43.125rem;
-//   margin-top: -10%;
-// }
 
 .slideshow-pagination {
   z-index: 10;
@@ -157,7 +155,7 @@ $nav-mobile-size: 35px;
     display: flex;
     width: auto;
 
-    @include media-breakpoint-up(xxxl) {
+    @include media-breakpoint-up(xxl) {
       left: 3.75rem;
       top: 50%;
       bottom: auto;
@@ -189,30 +187,6 @@ $nav-mobile-size: 35px;
     }
   }
 }
-
-// .lookbook-container {
-//   .slideshow-pagination {
-//     &.position-right-center {
-//       position: static;
-//       align-items: center;
-//       justify-content: center;
-//       margin-top: 1rem;
-
-//       @include media-breakpoint-up(xxl) {
-//         position: absolute;
-//         right: -3.75rem;
-
-//         &.position-right-2 {
-//           right: -2.6875rem;
-
-//           .swiper-pagination-bullet {
-//             margin: 0.25rem 0;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
 
 .blog-pagination,
 .testimonial-pagination,
@@ -389,7 +363,7 @@ $nav-mobile-size: 35px;
     font-size: $nav-icon-mobile-size;
   }
 
-  @media (min-width: map-get($grid-breakpoints, xxl) + 30px) {
+  @media (min-width: #{map-get($grid-breakpoints, xxl) + 30px}) {
     width: $nav-icon-desk-size;
     height: $nav-icon-desk-size;
     margin-top: -0.875rem;
@@ -410,7 +384,7 @@ $nav-mobile-size: 35px;
 .slideshow__prev {
   left: 1rem;
 
-  @media (min-width: map-get($grid-breakpoints, xxl) + 30px) {
+  @media (min-width: #{map-get($grid-breakpoints, xxl) + 30px}) {
     left: 3.5rem;
   }
 }
@@ -418,7 +392,7 @@ $nav-mobile-size: 35px;
 .slideshow__next {
   right: 1rem;
 
-  @media (min-width: map-get($grid-breakpoints, xxl) + 30px) {
+  @media (min-width: #{map-get($grid-breakpoints, xxl) + 30px}) {
     right: 3.5rem;
   }
 }

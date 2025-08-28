@@ -4,7 +4,7 @@ import commanService from "@/CommanService/commanService";
 import Loader from "@/CommanUIComp/Loader/Loader";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import WarrantyCardModal from "../modals/WarrantyCardModal";

@@ -41,7 +41,7 @@ $nav-mobile-size: 35px;
   }
 
   &:not(.navigation-sm) {
-    @media (min-width: map-get($grid-breakpoints, xxl) + 30px) {
+    @media (min-width: #{map-get($grid-breakpoints, xxl) + 30px}) {
       width: $nav-icon-desk-size;
       height: $nav-icon-desk-size;
       margin-top: -0.875rem;
@@ -68,7 +68,7 @@ $nav-mobile-size: 35px;
 .products-carousel__prev {
   left: -0.625rem;
 
-  @media (min-width: map-get($grid-breakpoints, xxl) + 30px) {
+  @media (min-width: #{map-get($grid-breakpoints, xxl) + 30px}) {
     left: -3rem;
 
     &.type2 {
@@ -80,7 +80,7 @@ $nav-mobile-size: 35px;
 .products-carousel__next {
   right: -0.625rem;
 
-  @media (min-width: map-get($grid-breakpoints, xxl) + 30px) {
+ @media (min-width: #{map-get($grid-breakpoints, xxl) + 30px}) {
     right: -3rem;
 
     &.type2 {

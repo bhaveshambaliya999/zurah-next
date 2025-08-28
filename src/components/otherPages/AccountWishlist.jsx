@@ -1,12 +1,13 @@
 import { useContextElement } from "@/context/Context";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import { Navigation } from "swiper/modules";
 import { useEffect, useState } from "react";
 import Loader from "@/CommanUIComp/Loader/Loader";
 import { changeUrl, isEmpty, numberWithCommas } from "@/CommanFunctions/commanFunctions";
 import { diamondNumber, diamondPageChnages, dimaondColorType } from "@/Redux/action";
 import { useDispatch } from "react-redux";
+import Image from "next/image";
 
 export default function AccountWishlist() {
   const router = useRouter();
@@ -77,11 +78,11 @@ export default function AccountWishlist() {
                         {elm?.data?.map((elm2, i) => (
                           <SwiperSlide key={i} className="swiper-slide">
                             {/* <Link to={`/product1_simple/${elm.id}`}> */}
-                            <img
+                            <Image
                               loading="lazy"
                               src={elm2.item_image}
-                              width="330"
-                              height="400"
+                              width={330}
+                              height={400}
                               alt={elm?.data?.[0]?.product_title}
                               className="pc__img"
                             />

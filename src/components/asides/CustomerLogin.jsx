@@ -1,5 +1,5 @@
 // import { closeModalUserlogin } from "@/utlis/aside";
-import { useRouter, usePathname, useParams, useSearchParams } from "next/navigation";
+import { usePathname, useParams, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +14,7 @@ import {
 import commanService from "@/CommanService/commanService";
 import { toast } from "react-toastify";
 import Loader from "@/CommanUIComp/Loader/Loader";
+import { useRouter } from "next/router";
 
 
 export default function CustomerLogin() {
@@ -198,6 +199,7 @@ export default function CustomerLogin() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 aria-label="Email Address" 
+                autoComplete="username"  
               />
               <label>Username or email address *</label>
             </div>
@@ -212,6 +214,7 @@ export default function CustomerLogin() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 aria-label="password" 
+                autoComplete="current-password"  
               />
               <div className="position-absolute top-50 end-0 translate-middle-y pe-3">
                 {password !== "" ? (

@@ -2,7 +2,7 @@ import { changeUrl, extractNumber, isEmpty, numberWithCommas } from "@/CommanFun
 import { ActiveStepsDiy, DiySteperData, storeProdData, storeSpecData } from "@/Redux/action";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 
 const DIYSetupAP = ({ position, setTypeViewDiy, activeStep, setActiveStep, setLoading, setSpecificationData, setEngravingData, setSelectedOffer, setEmbossingData }) => {
     //State Declaration

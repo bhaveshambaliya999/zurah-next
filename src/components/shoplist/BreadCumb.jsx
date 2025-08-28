@@ -427,11 +427,13 @@ const router = useRouter();
             </span>
             <Link
               href={
-                window.location.pathname.includes("offer")
-                  ? `/products/${params.verticalCode}/offer/${params.title}` : window.location.pathname.includes("collection")
-                    ? `/products/${params.verticalCode}/collection/${params.title}`
-                    : `/products/${params.verticalCode}/type/${params.title}`
-              }
+                  typeof window !== "undefined"
+                    ? window.location.pathname.includes("offer")
+                      ? `/products/${params.verticalCode}/offer/${params.title}`
+                      : window.location.pathname.includes("collection")
+                      ? `/products/${params.verticalCode}/collection/${params.title}`
+                      : `/products/${params.verticalCode}/type/${params.title}`
+                    : `/products/${params.verticalCode}/type/${params.title}`}
               onClick={() => {
                 dispatch(isFilter(true));
                 dispatch(filterData([]));

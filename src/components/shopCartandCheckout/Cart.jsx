@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import { useContextElement } from "@/context/Context";
 import { useCallback, useEffect, useState } from "react";

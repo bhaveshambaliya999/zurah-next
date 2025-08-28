@@ -1,34 +1,22 @@
+@import "../Assets/css/plugins/swiper.min.css";
+@import "../Assets/sass/style";
 
 //! Font Size
-$color-gray-900: #222222;
-$color-gray-500: #495057;
-$color-gray-300: #e4e4e4;
-$color-gray-200: #eeeeee;
-$color-gray-100: #faf9f8;
-$color-darkgreen: #2fac64;
-$color-green: #ccf5e1;
-$color-red-900: #ab3331;
-$color-red-800: #d6001c;
-$color-red-700: #d01a3b;
-$color-red-200: #ecc8c5;
-$color-white: #ffffff;
-$color-yellow: #f7f3d7;
-$color-olive: #927238;
-$color-brick: #704634;
-$color-beige: #b9a16b;
-$color-dark-purple: #2f2d51;
-$dark: #222222;
-$black : #000000;
-$white : #fff;
-$secondary : #495057;
-$border-color :#e4e4e4;
-$primary : $color-gray-900;
 .fs-2 {
   @media (max-width: 1199px) {
     font-size: calc(1.325rem + 0.9vw) !important;
   }
 }
 
+.h5,
+h5 {
+  font-size: $h5-font-size;
+}
+
+.h6,
+h6 {
+  font-size: $h6-font-size;
+}
 .fw-500{
   font-weight: 500;
 }
@@ -75,7 +63,10 @@ $primary : $color-gray-900;
 }
 
 .section-gap {
-  margin-bottom: 55px; 
+  margin-bottom: 55px;
+  @include media-breakpoint-down(md) {
+    margin-bottom: 30px;
+  }
 }
 .section-gap-20{
   margin-top: 20px;
@@ -391,10 +382,10 @@ $primary : $color-gray-900;
       margin-right: 5px;
     }
 
-    // @include media-breakpoint-down(xxs) {
-    //   font-size: 14px;
-    //   line-height: 1.2;
-    // }
+    @include media-breakpoint-down(xxs) {
+      font-size: 14px;
+      line-height: 1.2;
+    }
   }
 }
 
@@ -1161,34 +1152,34 @@ $primary : $color-gray-900;
     }
   }
 
-  // @include media-breakpoint-down(lg) {
-  //   flex-wrap: wrap;
+  @include media-breakpoint-down(lg) {
+    flex-wrap: wrap;
 
-  //   &__item {
-  //     &.clearRing {
-  //       width: 100%;
-  //     }
+    &__item {
+      &.clearRing {
+        width: 100%;
+      }
 
-  //     &.completeStep {
-  //       display: none;
-  //     }
-  //   }
-  // }
+      &.completeStep {
+        display: none;
+      }
+    }
+  }
 
-  // @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(sm) {
 
-  //   border-bottom: 0;
-  //   border-left: 2px solid $border-color;
-  //   flex-direction: column;
+    border-bottom: 0;
+    border-left: 2px solid $border-color;
+    flex-direction: column;
 
-  //   &__item {
-  //     border-left: 2px solid transparent;
-  //     margin-left: -2px;
-  //     border-bottom: 0;
-  //     margin-bottom: 0;
-  //     padding: 0.5rem 1rem;
-  //   }
-  // }
+    &__item {
+      border-left: 2px solid transparent;
+      margin-left: -2px;
+      border-bottom: 0;
+      margin-bottom: 0;
+      padding: 0.5rem 1rem;
+    }
+  }
 }
 
 .StoneSetBox {
@@ -2131,14 +2122,14 @@ $primary : $color-gray-900;
       }
     }
 
-    // @include media-breakpoint-down(sm) {
-    //   position: relative;
-    //   max-width: 100%;
+    @include media-breakpoint-down(sm) {
+      position: relative;
+      max-width: 100%;
 
-    //   h2 {
-    //     font-size: 1.2rem !important;
-    //   }
-    // }
+      h2 {
+        font-size: 1.2rem !important;
+      }
+    }
   }
 
   .lookbook-img {
@@ -2147,11 +2138,11 @@ $primary : $color-gray-900;
     max-height: 600px;
     object-fit: cover;
 
-    // @include media-breakpoint-down(sm) {
-    //   width: 100%;
-    //   height: 370px;
-    //   object-position: 100% center;
-    // }
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+      height: 370px;
+      object-position: 100% center;
+    }
   }
 }
 
@@ -2287,9 +2278,9 @@ $primary : $color-gray-900;
   margin-bottom: 3.25rem;
   padding-left: 0rem;
 
-  // @include media-breakpoint-up(xl) {
-  //   padding-left: 2.1875rem;
-  // }
+  @include media-breakpoint-up(xl) {
+    padding-left: 2.1875rem;
+  }
 }
 
 .inclusive {
@@ -2303,13 +2294,13 @@ $primary : $color-gray-900;
     font-weight: 500;
     padding: 0.5em 0;
 
-    // @include media-breakpoint-up(xl) {
-    //   font-size: 12px;
-    // }
+    @include media-breakpoint-up(xl) {
+      font-size: 12px;
+    }
 
-    // @include media-breakpoint-up(xxl) {
-    //   font-size: 14px;
-    // }
+    @include media-breakpoint-up(xxl) {
+      font-size: 14px;
+    }
   }
 }
 
@@ -2683,8 +2674,9 @@ $primary : $color-gray-900;
 
 .payment-options {
   img {
-    width: auto;
-    height: auto;
+    max-width: 100%;   
+    height: auto;     
+    display: block;
   }
 }
 
@@ -2902,7 +2894,7 @@ $primary : $color-gray-900;
   margin: 40px 0;
 }
 
-.filters-accordion{
+.filters-accordion, .checkout-form{
   .accordion-item{
     border: 0;
     border-radius: 0;
@@ -2921,17 +2913,3 @@ $primary : $color-gray-900;
 .text-light1{
   color: #555;
 }
-
-.loader {
-    position: fixed !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    top: 0 !important;
-    left: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    z-index: 999999 !important;
-    background-color: rgba(0, 0, 0, 0.2) !important;
-    overflow: hidden !important;
-  }

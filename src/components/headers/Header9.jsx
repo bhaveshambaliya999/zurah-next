@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { openCart } from "../../utlis/openCart";
 import CartLength from "./components/CartLength";
@@ -284,32 +285,32 @@ export default function Header1({storeData}) {
   }, []);
 
   //Get store Data
-  const handleGetStoreData = useCallback(() => {
-    setLoader(true);
-    const getEntityId = {
-      a: "GetStoreData",
-      store_domain: domain,
-      SITDeveloper: "1",
-    };
-    commanService
-      .postApi("/EmbeddedPageMaster", getEntityId)
-      .then((res) => {
-        if (res.data.success === 1) {
-          const data = res.data.data;
-          sessionStorage.setItem("storeNavData", JSON.stringify(data));
-          if (Object.keys(data)?.length > 0) {
-            headerSectionData(data);
-            // getCartItems();
-            // getWishListFavourit();
-            dispatch(storeEntityId(data));
-            dispatch(storeCurrency(data?.store_currency));
-          }
-        } else {
-          setLoader(false);
-        }
-      })
-      .catch(() => { });
-  }, [domain, storeCurrencys]);
+  // const handleGetStoreData = useCallback(() => {
+  //   setLoader(true);
+  //   const getEntityId = {
+  //     a: "GetStoreData",
+  //     store_domain: domain,
+  //     SITDeveloper: "1",
+  //   };
+  //   commanService
+  //     .postApi("/EmbeddedPageMaster", getEntityId)
+  //     .then((res) => {
+  //       if (res.data.success === 1) {
+  //         const data = res.data.data;
+  //         sessionStorage.setItem("storeNavData", JSON.stringify(data));
+  //         if (Object.keys(data)?.length > 0) {
+  //           headerSectionData(data);
+  //           // getCartItems();
+  //           // getWishListFavourit();
+  //           dispatch(storeEntityId(data));
+  //           dispatch(storeCurrency(data?.store_currency));
+  //         }
+  //       } else {
+  //         setLoader(false);
+  //       }
+  //     })
+  //     .catch(() => { });
+  // }, [domain, storeCurrencys]);
 
   //Home page Navigation
   const homePageNavigation = () => {
@@ -380,7 +381,7 @@ export default function Header1({storeData}) {
         // dispatch(showMoreValue(false))
       }
       // homePageNavigation();
-      handleGetStoreData();
+      headerSectionData(storeEntityIds)
       if (isLogin) {
         getCartItems();
         getWishListFavourit();
@@ -442,10 +443,11 @@ export default function Header1({storeData}) {
                   >
                     <Image
                       src={h?.image}
-                      width={112}
-                      height={28}
+                      width={128}
+                      height={52}
                       alt={h?.logo_type || "HomePage Logo"}
                       className="logo__image d-block"
+                      priority fetchPriority="high"
                     />
                   </Link>
                 ))

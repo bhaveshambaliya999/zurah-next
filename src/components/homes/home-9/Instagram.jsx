@@ -3,7 +3,8 @@ import { getAllJourneyData } from "../../../Redux/action";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import Image from "next/image";
 
 export default function Instagram() {
@@ -52,7 +53,7 @@ export default function Instagram() {
       <div className="row row-cols-2 row-cols-md-4 row-cols-xl-8">
       {journeyList
               ? journeyList.map((elm, i) => (
-                <Link to={`/dashboard/viewjourney?unique_id=${elm.unique_id}&type=${elm.type ?? 'S'}`} key={i} className="instagram__tile"  aria-label={"view journey"}>
+                <Link href={`/dashboard/viewjourney?unique_id=${elm.unique_id}&type=${elm.type ?? 'S'}`} key={i} className="instagram__tile"  aria-label={"view journey"}>
             <div href="https://instagram.com"  target="_blank" className="position-relative overflow-hidden d-block effect overlay-plus" >
               <Image
                 loading="lazy"

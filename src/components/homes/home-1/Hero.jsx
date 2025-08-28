@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { sectionDetailsData } from "@/Redux/action";
 import Loader from "@/CommanUIComp/Loader/Loader";
 import { isEmpty } from "@/CommanFunctions/commanFunctions";
+import Image from "next/image";
 export default function Hero() {
   const dispatch = useDispatch();
   const storeEntityIds = useSelector((state) => state.storeEntityId);
@@ -77,13 +78,14 @@ export default function Hero() {
                   className="slideshow-bg"
                   style={{ backgroundColor: "#f5e6e0" }}
                 >
-                  <img
+                  <Image
                     loading="lazy"
                     src={elm.slider}
-                    width="1761"
-                    height="778"
+                    width={1761}
+                    height={778}
                     alt={elm.text}
                     className="slideshow-bg__img object-fit-cover"
+                    layout="responsive"
                   />
                 </div>
                 {/* <!-- <p className="slideshow_markup font-special text-uppercase position-absolute end-0 bottom-0">Summer</p> --> */}
@@ -135,7 +137,7 @@ export default function Hero() {
                       isEmpty(elm.button_title_1) != "" ? (
                       <Link
                         className="btn-link btn-link_lg default-underline text-uppercase fw-medium animate animate_fade animate_btt animate_delay-7"
-                        to={elm.button_link_1}
+                        href={elm.button_link_1}
                       >
                         {elm.button_title_1}
                       </Link>
@@ -152,7 +154,7 @@ export default function Hero() {
                       isEmpty(elm.button_title_2) != "" ? (
                       <Link
                         className="btn-link btn-link_lg default-underline text-uppercase fw-medium animate animate_fade animate_btt animate_delay-7"
-                        to={elm.button_link_2}
+                        href={elm.button_link_2}
                       >
                         {elm.button_title_2}
                       </Link>
@@ -161,7 +163,7 @@ export default function Hero() {
                     )}
                   </div>
                   {/* <Link
-                to={elm.button_link_1}
+                href={elm.button_link_1}
                 className="btn-link btn-link_lg default-underline text-uppercase fw-medium animate animate_fade animate_btt animate_delay-7"
               >
                 {elm.button_title_1}

@@ -279,6 +279,7 @@ export default function Footer8() {
                 setEmail(event.target.value);
               }}
               required
+              autoComplete="username"  
             />
             <button className="btn btn-primary fw-medium" type="submit" onClick={() => {
               subscribeEmail();

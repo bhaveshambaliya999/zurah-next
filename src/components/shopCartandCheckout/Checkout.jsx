@@ -33,7 +33,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { Link, useNavigate } from "react-router-dom";
 
 
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import Select from "react-select";
 import { toast } from "react-toastify";
@@ -55,7 +55,6 @@ export default function Checkout() {
 
   const isLogin = Object.keys(loginDatas).length > 0;
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
   const { cartProducts, totalPrice } = useContextElement();

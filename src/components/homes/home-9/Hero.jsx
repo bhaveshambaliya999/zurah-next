@@ -1,7 +1,8 @@
 import { Autoplay, EffectFade, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useEffect, useState } from "react";
 import { isEmpty } from "../../../CommanFunctions/commanFunctions";
@@ -77,19 +78,17 @@ export default function Hero({storeData}) {
             <div className="overflow-hidden position-relative h-100">
               <Link className="slideshow-bg" href={isEmpty(elm.button_link_1) ? elm.button_link_1 : isEmpty(elm.button_link_2) ? elm.button_link_2 : ""} aria-label={elm?.text || `Banner slide ${i + 1}`}>
                 <Image
-
+                  src={elm?.slider}
+                  alt={elm?.text}
+                  fill
                   priority={i === 0}
                   loading={i === 0 ? "eager" : "lazy"}
-                  src={elm?.slider}
-                  // width={1863}
-                  // height={700}
-                  alt={elm?.text}
                   decoding="async"
                   placeholder="blur"
                   blurDataURL="/placeholder.jpg"
-                  layout="fill"
-                  objectFit="cover"
+                  style={{ objectFit: "cover" }}
                   className="slideshow-bg__img object-fit-cover object-position-right"
+                  sizes="100vw"
                 />
               </Link>
               <div className="slideshow-text container position-absolute start-50 top-50 translate-middle">

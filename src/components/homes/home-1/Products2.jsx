@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import { useContextElement } from "../../../context/Context";
 const filterCategories = ["Featured", "Best Seller", "Sales"];
 

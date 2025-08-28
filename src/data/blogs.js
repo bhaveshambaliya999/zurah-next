@@ -258,14 +258,14 @@ export const blogs6 = [
   },
   {
     id: 34,
-    imgSrc: "/assets/images/home/demo14/blog-2.jpg",
+    imgSrc: "/assets/images/home/demo14/blog-1.jpg",
     author: "Admin",
     date: "April 05, 2023",
     title: "What Freud Can Teach Us About Furniture",
   },
   {
     id: 35,
-    imgSrc: "/assets/images/home/demo14/blog-3.jpg",
+    imgSrc: "/assets/images/home/demo14/blog-1.jpg",
     author: "Admin",
     date: "April 05, 2023",
     title: "Habitant morbi tristique senectus",
@@ -279,14 +279,14 @@ export const blogs6 = [
   },
   {
     id: 37,
-    imgSrc: "/assets/images/home/demo14/blog-2.jpg",
+    imgSrc: "/assets/images/home/demo14/blog-1.jpg",
     author: "Admin",
     date: "April 05, 2023",
     title: "What Freud Can Teach Us About Furniture",
   },
   {
     id: 38,
-    imgSrc: "/assets/images/home/demo14/blog-3.jpg",
+    imgSrc: "/assets/images/home/demo14/blog-1.jpg",
     author: "Admin",
     date: "April 05, 2023",
     title: "Habitant morbi tristique senectus",
@@ -304,7 +304,7 @@ export const blogs7 = [
   },
   {
     id: 40,
-    imgSrc: "/assets/images/home/demo15/blog-2.jpg",
+    imgSrc: "/assets/images/home/demo15/blog-1.jpg",
     date: "April 05, 2023",
     title: "Woman with good shoes is never be ugly place",
     author: "Admin",
@@ -313,7 +313,7 @@ export const blogs7 = [
   },
   {
     id: 41,
-    imgSrc: "/assets/images/home/demo15/blog-3.jpg",
+    imgSrc: "/assets/images/home/demo15/blog-1.jpg",
     date: "April 05, 2023",
     title: "Woman with good shoes is never be ugly place",
     author: "Admin",
@@ -322,7 +322,7 @@ export const blogs7 = [
   },
   {
     id: 42,
-    imgSrc: "/assets/images/home/demo15/blog-4.jpg",
+    imgSrc: "/assets/images/home/demo15/blog-1.jpg",
     date: "April 05, 2023",
     title: "Woman with good shoes is never be ugly place",
     author: "Admin",
@@ -340,7 +340,7 @@ export const blogs7 = [
   },
   {
     id: 44,
-    imgSrc: "/assets/images/home/demo15/blog-2.jpg",
+    imgSrc: "/assets/images/home/demo15/blog-1.jpg",
     date: "April 05, 2023",
     title: "Woman with good shoes is never be ugly place",
     author: "Admin",
@@ -349,7 +349,7 @@ export const blogs7 = [
   },
   {
     id: 45,
-    imgSrc: "/assets/images/home/demo15/blog-3.jpg",
+    imgSrc: "/assets/images/home/demo15/blog-1.jpg",
     date: "April 05, 2023",
     title: "Woman with good shoes is never be ugly place",
     author: "Admin",
@@ -358,7 +358,7 @@ export const blogs7 = [
   },
   {
     id: 46,
-    imgSrc: "/assets/images/home/demo15/blog-4.jpg",
+    imgSrc: "/assets/images/home/demo15/blog-1.jpg",
     date: "April 05, 2023",
     title: "Woman with good shoes is never be ugly place",
     author: "Admin",
@@ -376,14 +376,14 @@ export const blogs8 = [
   },
   {
     id: 48,
-    imgSrc: "/assets/images/home/demo16/blog-2.jpg",
+    imgSrc: "/assets/images/home/demo16/blog-1.jpg",
     author: "Admin",
     date: "April 05, 2023",
     title: "Woman with good shoes is never be ugly place",
   },
   {
     id: 49,
-    imgSrc: "/assets/images/home/demo16/blog-3.jpg",
+    imgSrc: "/assets/images/home/demo16/blog-1.jpg",
     author: "Admin",
     date: "April 05, 2023",
     title: "Woman with good shoes is never be ugly place",
@@ -397,14 +397,14 @@ export const blogs8 = [
   },
   {
     id: 51,
-    imgSrc: "/assets/images/home/demo16/blog-2.jpg",
+    imgSrc: "/assets/images/home/demo16/blog-1.jpg",
     author: "Admin",
     date: "April 05, 2023",
     title: "Woman with good shoes is never be ugly place",
   },
   {
     id: 52,
-    imgSrc: "/assets/images/home/demo16/blog-3.jpg",
+    imgSrc: "/assets/images/home/demo16/blog-1.jpg",
     author: "Admin",
     date: "April 05, 2023",
     title: "Woman with good shoes is never be ugly place",
@@ -428,7 +428,7 @@ export const blogs9 = [
     title: "Attract Sales And Profits",
     content:
       "A job ravenously while Far much that one rank beheld after outside....",
-    imgSrc: "/assets/images/home/demo18/blog-2.jpg",
+    imgSrc: "/assets/images/home/demo18/blog-1.jpg",
   },
   {
     id: 55,
@@ -437,7 +437,7 @@ export const blogs9 = [
     title: "Attract Sales And Profits",
     content:
       "A job ravenously while Far much that one rank beheld after outside....",
-    imgSrc: "/assets/images/home/demo18/blog-3.jpg",
+    imgSrc: "/assets/images/home/demo18/blog-1.jpg",
   },
   {
     id: 56,
@@ -446,7 +446,7 @@ export const blogs9 = [
     title: "Attract Sales And Profits",
     content:
       "A job ravenously while Far much that one rank beheld after outside....",
-    imgSrc: "/assets/images/home/demo18/blog-4.jpg",
+    imgSrc: "/assets/images/home/demo18/blog-1.jpg",
   },
   {
     id: 57,
@@ -464,7 +464,7 @@ export const blogs9 = [
     title: "Attract Sales And Profits",
     content:
       "A job ravenously while Far much that one rank beheld after outside....",
-    imgSrc: "/assets/images/home/demo18/blog-2.jpg",
+    imgSrc: "/assets/images/home/demo18/blog-1.jpg",
   },
   {
     id: 59,
@@ -473,7 +473,7 @@ export const blogs9 = [
     title: "Attract Sales And Profits",
     content:
       "A job ravenously while Far much that one rank beheld after outside....",
-    imgSrc: "/assets/images/home/demo18/blog-3.jpg",
+    imgSrc: "/assets/images/home/demo18/blog-1.jpg",
   },
   {
     id: 60,
@@ -482,7 +482,7 @@ export const blogs9 = [
     title: "Attract Sales And Profits",
     content:
       "A job ravenously while Far much that one rank beheld after outside....",
-    imgSrc: "/assets/images/home/demo18/blog-4.jpg",
+    imgSrc: "/assets/images/home/demo18/blog-1.jpg",
   },
 ];
 
@@ -498,7 +498,7 @@ export const blogs10 = [
   },
   {
     id: 62,
-    imgSrc: "/assets/images/home/demo19/blog-2.jpg",
+    imgSrc: "/assets/images/home/demo19/blog-1.jpg",
     author: "Admin",
     date: "April 05, 2023",
     title: "Woman with good shoes is never be ugly place",
@@ -507,7 +507,7 @@ export const blogs10 = [
   },
   {
     id: 63,
-    imgSrc: "/assets/images/home/demo19/blog-3.jpg",
+    imgSrc: "/assets/images/home/demo19/blog-1.jpg",
     author: "Admin",
     date: "April 05, 2023",
     title: "Woman with good shoes is never be ugly place",
@@ -516,7 +516,7 @@ export const blogs10 = [
   },
   {
     id: 64,
-    imgSrc: "/assets/images/home/demo19/blog-4.jpg",
+    imgSrc: "/assets/images/home/demo19/blog-1.jpg",
     author: "Admin",
     date: "April 05, 2023",
     title: "Woman with good shoes is never be ugly place",
@@ -537,7 +537,7 @@ export const blogs11 = [
   },
   {
     id: 66,
-    imgSrc: "/assets/images/home/demo22/blog-2.jpg",
+    imgSrc: "/assets/images/home/demo22/blog-1.jpg",
     date: "April 05, 2023",
     comments: "12 Comment",
     title: "Attract Sales And Profits",
@@ -546,7 +546,7 @@ export const blogs11 = [
   },
   {
     id: 67,
-    imgSrc: "/assets/images/home/demo22/blog-3.jpg",
+    imgSrc: "/assets/images/home/demo22/blog-1.jpg",
     date: "April 05, 2023",
     comments: "12 Comment",
     title: "Attract Sales And Profits",
@@ -555,7 +555,7 @@ export const blogs11 = [
   },
   {
     id: 68,
-    imgSrc: "/assets/images/home/demo22/blog-4.jpg",
+    imgSrc: "/assets/images/home/demo22/blog-1.jpg",
     date: "April 05, 2023",
     comments: "12 Comment",
     title: "Attract Sales And Profits",
@@ -573,7 +573,7 @@ export const blogs11 = [
   },
   {
     id: 70,
-    imgSrc: "/assets/images/home/demo22/blog-2.jpg",
+    imgSrc: "/assets/images/home/demo22/blog-1.jpg",
     date: "April 05, 2023",
     comments: "12 Comment",
     title: "Attract Sales And Profits",
@@ -582,7 +582,7 @@ export const blogs11 = [
   },
   {
     id: 71,
-    imgSrc: "/assets/images/home/demo22/blog-3.jpg",
+    imgSrc: "/assets/images/home/demo22/blog-1.jpg",
     date: "April 05, 2023",
     comments: "12 Comment",
     title: "Attract Sales And Profits",
@@ -591,7 +591,7 @@ export const blogs11 = [
   },
   {
     id: 72,
-    imgSrc: "/assets/images/home/demo22/blog-4.jpg",
+    imgSrc: "/assets/images/home/demo22/blog-1.jpg",
     date: "April 05, 2023",
     comments: "12 Comment",
     title: "Attract Sales And Profits",
@@ -614,7 +614,7 @@ export const blogs12 = [
 
   {
     id: 74,
-    imgSrc: "/assets/images/blog/blog-2.jpg",
+    imgSrc: "/assets/images/blog/blog-1.jpg",
     author: "By Admin",
     date: "April 05, 2023",
     title: "5 Tips to Increase Your Online Sales",
@@ -625,7 +625,7 @@ export const blogs12 = [
 
   {
     id: 75,
-    imgSrc: "/assets/images/blog/blog-3.jpg",
+    imgSrc: "/assets/images/blog/blog-1.jpg",
     author: "By Admin",
     date: "April 05, 2023",
     title: "Tree earth fowl given moveth deep lesser After",
@@ -636,7 +636,7 @@ export const blogs12 = [
 
   {
     id: 76,
-    imgSrc: "/assets/images/blog/blog-4.jpg",
+    imgSrc: "/assets/images/blog/blog-1.jpg",
     author: "By Admin",
     date: "April 05, 2023",
     title: "Given Set was without from god divide rule Hath",
@@ -649,7 +649,7 @@ export const blogs12 = [
 export const blogs13 = [
   {
     id: 77,
-    imgSrc: "/assets/images/blog/blog-5.jpg",
+    imgSrc: "/assets/images/blog/blog-1.jpg",
     author: "By Admin",
     date: "April 05, 2023",
     title: "Woman with good shoes is never be ugly place",
@@ -659,7 +659,7 @@ export const blogs13 = [
   },
   {
     id: 78,
-    imgSrc: "/assets/images/blog/blog-6.jpg",
+    imgSrc: "/assets/images/blog/blog-1.jpg",
     author: "By Admin",
     date: "April 05, 2023",
     title: "Heaven upon heaven moveth every have.",
@@ -669,7 +669,7 @@ export const blogs13 = [
   },
   {
     id: 79,
-    imgSrc: "/assets/images/blog/blog-7.jpg",
+    imgSrc: "/assets/images/blog/blog-1.jpg",
     author: "By Admin",
     date: "April 05, 2023",
     title: "Tree doesn't good void, waters without created",
@@ -679,7 +679,7 @@ export const blogs13 = [
   },
   {
     id: 80,
-    imgSrc: "/assets/images/blog/blog-8.jpg",
+    imgSrc: "/assets/images/blog/blog-1.jpg",
     author: "By Admin",
     date: "April 05, 2023",
     title: "Given Set was without from god divide rule Hath",
@@ -689,7 +689,7 @@ export const blogs13 = [
   },
   {
     id: 81,
-    imgSrc: "/assets/images/blog/blog-9.jpg",
+    imgSrc: "/assets/images/blog/blog-1.jpg",
     author: "By Admin",
     date: "April 05, 2023",
     title: "Tree earth fowl given moveth deep lesser After",
@@ -699,7 +699,7 @@ export const blogs13 = [
   },
   {
     id: 82,
-    imgSrc: "/assets/images/blog/blog-10.jpg",
+    imgSrc: "/assets/images/blog/blog-1.jpg",
     author: "By Admin",
     date: "April 05, 2023",
     title: "Us yielding Fish sea night night the said him two",
@@ -712,7 +712,7 @@ export const blogs13 = [
 export const blogs14 = [
   {
     id: 83,
-    imgSrc: "/assets/images/blog/blog-11.jpg",
+    imgSrc: "/assets/images/blog/blog-1.jpg",
     author: "By Admin",
     date: "April 05, 2023",
     title: "Us yielding Fish sea night night the said him two",
@@ -722,7 +722,7 @@ export const blogs14 = [
   },
   {
     id: 84,
-    imgSrc: "/assets/images/blog/blog-12.jpg",
+    imgSrc: "/assets/images/blog/blog-1.jpg",
     author: "By Admin",
     date: "April 05, 2023",
     title: "Given Set was without from god divide rule Hath",
@@ -732,7 +732,7 @@ export const blogs14 = [
   },
   {
     id: 85,
-    imgSrc: "/assets/images/blog/blog-13.jpg",
+    imgSrc: "/assets/images/blog/blog-1.jpg",
     author: "By Admin",
     date: "April 05, 2023",
     title: "Woman with good shoes is never be ugly place",

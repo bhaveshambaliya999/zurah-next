@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { useRouter, useParams, usePathname, useSearchParams } from "next/navigation";
+import { useParams, usePathname, useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -432,7 +433,7 @@ export default function DIYSteps(props) {
                     props.diamondStepTwo();
                     dispatch(isRingSelected(false));
                     dispatch(activeDIYtabs("Jewellery"));
-                    navigate(
+                    router.push(
                       `/make-your-customization/start-with-a-diamond/jewellery/${addedRingDatas.variant_data[0].product_name
                         .replaceAll(" ", "-")
                         .toLowerCase()}-${addedRingDatas.variant_data[0].variant_unique_id.toLowerCase()}`
@@ -440,7 +441,7 @@ export default function DIYSteps(props) {
                   } else {
                     dispatch(isRingSelected(false));
                     dispatch(activeDIYtabs("Jewellery"));
-                    navigate(
+                    router.push(
                       `/make-your-customization/start-with-a-diamond/jewellery/${addedRingDatas.variant_data[0].product_name
                         .replaceAll(" ", "-")
                         .toLowerCase()}-${addedRingDatas.variant_data[0].variant_unique_id.toLowerCase()}`
@@ -472,7 +473,7 @@ export default function DIYSteps(props) {
                   dispatch(activeDIYtabs("Complete"));
                 } else if (addedRingDatas.variant_data?.length > 0) {
                   dispatch(activeDIYtabs("Complete"));
-                  navigate(
+                  router.push(
                     `/make-your-customization/start-with-a-diamond/jewellery/${addedRingDatas.variant_data[0].product_name
                       .replaceAll(" ", "-")
                       .toLowerCase()}-${addedRingDatas.variant_data[0].pv_unique_id.toLowerCase()}`

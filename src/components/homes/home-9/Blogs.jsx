@@ -68,7 +68,14 @@ export default function Blogs() {
                     }}  aria-label={elm?.title || `Blog Link ${index + 1}`}
                   >
                     <div className="blog-grid__item-image">
-                      <Image loading="lazy" src={elm.featured_image} width={450} height={300} alt={elm?.title} />
+                      <Image
+                        src={elm.featured_image}
+                        alt={elm?.title}
+                        loading="lazy"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="blog-grid__item-image__img"
+                      />
                     </div>
                     <div className="blog-grid__item-detail">
                       <div className="blog-grid__item-meta">
