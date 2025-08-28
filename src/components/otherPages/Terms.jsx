@@ -9,7 +9,7 @@ import { isEmpty } from "@/CommanFunctions/commanFunctions";
 import { useRouter } from "next/router";
 import { useParams } from "next/navigation";
 import Image from "next/image";
-import NotFoundImg from "../../assets/images/RecordNotfound.png";
+import NotFoundImg from "/assets/images/RecordNotfound.png";
 
 export default function Terms() {
   const { policyName } = useParams();

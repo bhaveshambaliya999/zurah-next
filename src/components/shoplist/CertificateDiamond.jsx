@@ -45,7 +45,7 @@ import CertificateDiamondDetails from "./CertificateDiamondDetails";
 import DIYSteps from "./DIYSteps";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import NotFoundImg from "../../assets/images/RecordNotfound.png";
+import NotFoundImg from "/assets/images/RecordNotfound.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
