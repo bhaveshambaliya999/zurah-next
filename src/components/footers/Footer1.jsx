@@ -17,7 +17,7 @@ import { toast } from "react-toastify";
 import { isEmpty, RandomId } from "../../CommanFunctions/commanFunctions";
 import Features from "../common/features/Features";
 import Image from "next/image";
-import paymentGateways from "@/Assets/images/payment-options.png";
+import paymentGateways from "../../assets/images/payment-options.png";
 import { FormSelect } from "react-bootstrap"
 
 export default function Footer1() {
